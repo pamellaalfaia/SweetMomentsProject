@@ -15,8 +15,9 @@ public class SweetMomentsProject {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        //teste
+        view.ViewMenu viewMenu = new view.ViewMenu();
+        controller.ControllerMenu theController = new controller.ControllerMenu(viewMenu);
+        theController.setFrameVisible();
     }
     
 }

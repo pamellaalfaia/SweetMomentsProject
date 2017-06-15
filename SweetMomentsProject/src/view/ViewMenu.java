@@ -36,7 +36,7 @@ public class ViewMenu extends javax.swing.JFrame {
         ImageIcon indicadores = new ImageIcon("Images/chart (1).png");
         jButtonIndicadores.setIcon(indicadores);
         ImageIcon tarefas = new ImageIcon("Images/task-edi.png");
-        jButtonProdutos.setIcon(tarefas);
+        jButtonTarefas.setIcon(tarefas);
         ImageIcon agenda = new ImageIcon("Images/calendar.png");
         jButtonAgenda.setIcon(agenda);
         ImageIcon receita = new ImageIcon("Images/recipe.png");
@@ -51,7 +51,7 @@ public class ViewMenu extends javax.swing.JFrame {
         jButtonMedidas.setIcon(medidas);
 
         jButtonPedidos.setText("<html><b>Pedidos</b><br><font size='3'>Visualize e faça <br>seus pedidos</html>");
-        jButtonProdutos.setText("<html><b>Tarefas</b><br><font size='3'>Cadastre, visualize<br>e edite tarefas</html>");
+        jButtonTarefas.setText("<html><b>Tarefas</b><br><font size='3'>Cadastre, visualize<br>e edite tarefas</html>");
         jButtonAgenda.setText("<html><b>Agenda</b><br><font size='3'>Seus eventos <br>tarefas</html>");
         jButtonIndicadores.setText("<html><b>Indicadores</b><br><font size='3'>Seus eventos <br>tarefas</html>");
         jButtonReceitas.setText("<html><b>Receitas</b><br><font size='3'>Seus eventos <br>tarefas</html>");
@@ -74,7 +74,7 @@ public class ViewMenu extends javax.swing.JFrame {
         jButtonReceitas = new javax.swing.JButton();
         jButtonPedidos = new javax.swing.JButton();
         jButtonIngredientes = new javax.swing.JButton();
-        jButtonProdutos = new javax.swing.JButton();
+        jButtonTarefas = new javax.swing.JButton();
         jButtonClientes = new javax.swing.JButton();
         jButtonCompras = new javax.swing.JButton();
         jButtonAgenda = new javax.swing.JButton();
@@ -104,10 +104,10 @@ public class ViewMenu extends javax.swing.JFrame {
         jButtonIngredientes.setText("Ingredientes");
         jButtonIngredientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButtonProdutos.setBackground(new java.awt.Color(204, 255, 255));
-        jButtonProdutos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButtonProdutos.setText("Tarefas");
-        jButtonProdutos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonTarefas.setBackground(new java.awt.Color(204, 255, 255));
+        jButtonTarefas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonTarefas.setText("Tarefas");
+        jButtonTarefas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jButtonClientes.setBackground(new java.awt.Color(204, 204, 255));
         jButtonClientes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -178,7 +178,7 @@ public class ViewMenu extends javax.swing.JFrame {
                             .addComponent(jButtonPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(63, 63, 63)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonTarefas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))
                         .addGap(63, 63, 63)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -198,7 +198,7 @@ public class ViewMenu extends javax.swing.JFrame {
                         .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonPedidos, javax.swing.GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
-                            .addComponent(jButtonProdutos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonTarefas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonAgenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(46, 46, 46)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -318,8 +318,8 @@ public class ViewMenu extends javax.swing.JFrame {
         jButtonPedidos.addActionListener(listenerForjButtonPedidos);
     }
 
-    public void produtosListener(ActionListener listenerForjButtonProdutos) {
-        jButtonProdutos.addActionListener(listenerForjButtonProdutos);
+    public void tarefasListener(ActionListener listenerForjButtonTarefas) {
+        jButtonTarefas.addActionListener(listenerForjButtonTarefas);
     }
 
     public void agendaListener(ActionListener listenerForjButtonAgenda) {
@@ -358,8 +358,8 @@ public class ViewMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButtonIngredientes;
     private javax.swing.JButton jButtonMedidas;
     private javax.swing.JButton jButtonPedidos;
-    private javax.swing.JButton jButtonProdutos;
     private javax.swing.JButton jButtonReceitas;
+    private javax.swing.JButton jButtonTarefas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
