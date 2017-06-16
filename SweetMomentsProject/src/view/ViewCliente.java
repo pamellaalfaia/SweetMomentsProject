@@ -7,6 +7,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JTable;
 
 /**
@@ -22,6 +23,19 @@ public class ViewCliente extends javax.swing.JFrame {
         initComponents();
         
         this.getContentPane().setBackground(Color.white);
+        
+        ImageIcon check = new ImageIcon("Images/success-menor.png");
+        BtnNovoEndereco.setIcon(check);
+        ImageIcon proximo = new ImageIcon("Images/next-azul-menor.png");
+        BtnProximo.setIcon(proximo);
+        ImageIcon anterior = new ImageIcon("Images/previous-azul-menor.png");
+        BtnAnterior.setIcon(anterior);
+        ImageIcon novoEndereco = new ImageIcon("Images/plus-menor.png");
+        BtnMaisUmEndereco.setIcon(novoEndereco);
+        ImageIcon editarEndereco = new ImageIcon("Images/edit.png");
+        BtnEditarEndereco.setIcon(editarEndereco);
+        ImageIcon excluirEndereco = new ImageIcon("Images/delete.png");
+        BtnExcluirEndereco.setIcon(excluirEndereco);
     }
 
     /**
@@ -72,6 +86,11 @@ public class ViewCliente extends javax.swing.JFrame {
         TxtId = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         LabelIdEndereco = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jTextFieldEmail = new javax.swing.JTextField();
+        BtnMaisUmEndereco = new javax.swing.JButton();
+        BtnEditarEndereco = new javax.swing.JButton();
+        BtnExcluirEndereco = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,7 +139,7 @@ public class ViewCliente extends javax.swing.JFrame {
                         .addComponent(BtnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(72, 72, 72)
                         .addComponent(BtnVoltarBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 745, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 766, Short.MAX_VALUE)
                     .addComponent(jTextField9))
                 .addGap(22, 22, 22))
         );
@@ -174,6 +193,12 @@ public class ViewCliente extends javax.swing.JFrame {
 
         jLabel1.setText("Nome");
 
+        TxtBairro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtBairroActionPerformed(evt);
+            }
+        });
+
         jLabel2.setText("Telefone");
 
         TxtEntrega.addActionListener(new java.awt.event.ActionListener() {
@@ -182,40 +207,66 @@ public class ViewCliente extends javax.swing.JFrame {
             }
         });
 
-        BtnProximo.setText(">");
-        BtnProximo.setEnabled(false);
-
-        BtnNovoEndereco.setText("+");
-
-        BtnAnterior.setText("<");
-        BtnAnterior.setEnabled(false);
-
         TxtId.setEnabled(false);
 
         jLabel11.setText("ID");
 
         LabelIdEndereco.setText("1");
 
+        jLabel12.setText("E-mail");
+
+        BtnMaisUmEndereco.setEnabled(false);
+
+        BtnEditarEndereco.setEnabled(false);
+
+        BtnExcluirEndereco.setEnabled(false);
+
         javax.swing.GroupLayout PanelCadastroLayout = new javax.swing.GroupLayout(PanelCadastro);
         PanelCadastro.setLayout(PanelCadastroLayout);
         PanelCadastroLayout.setHorizontalGroup(
             PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jSeparator2)
+            .addGroup(PanelCadastroLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCadastroLayout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(18, 18, 18)
+                        .addComponent(TxtId, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelCadastroLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(TxtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(74, 74, 74)
+                .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel12))
+                .addGap(18, 18, 18)
+                .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldEmail)
+                    .addComponent(TxtNome))
+                .addGap(35, 35, 35))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCadastroLayout.createSequentialGroup()
                 .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelCadastroLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jLabel9)
+                        .addGap(18, 18, 18)
+                        .addComponent(TxtComplemento))
                     .addGroup(PanelCadastroLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4))
+                        .addContainerGap()
+                        .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
                         .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelCadastroLayout.createSequentialGroup()
-                                .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TxtRua, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TxtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
+                                .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(TxtRua, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)
+                                    .addComponent(TxtBairro))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
                                 .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(PanelCadastroLayout.createSequentialGroup()
                                         .addGap(47, 47, 47)
@@ -227,14 +278,15 @@ public class ViewCliente extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(TxtEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(TxtDescricao)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelCadastroLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel9)
-                        .addGap(18, 18, 18)
-                        .addComponent(TxtComplemento))
                     .addGroup(PanelCadastroLayout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(BtnNovoEndereco)
+                        .addGap(30, 30, 30)
+                        .addComponent(BtnMaisUmEndereco)
+                        .addGap(30, 30, 30)
+                        .addComponent(BtnEditarEndereco)
+                        .addGap(30, 30, 30)
+                        .addComponent(BtnExcluirEndereco)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(BtnAnterior)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -243,47 +295,36 @@ public class ViewCliente extends javax.swing.JFrame {
                         .addComponent(LabelIdEndereco)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BtnProximo)))
-                .addGap(20, 20, 20))
-            .addComponent(jSeparator2)
+                .addGap(35, 35, 35))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCadastroLayout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(BtnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BtnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(154, 154, 154)
+                .addComponent(BtnVoltarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
             .addGroup(PanelCadastroLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(PanelCadastroLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(BtnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BtnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101)
-                .addComponent(BtnVoltarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCadastroLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel11)
-                .addGap(18, 18, 18)
-                .addComponent(TxtId, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(TxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(TxtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
         );
         PanelCadastroLayout.setVerticalGroup(
             PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelCadastroLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(38, 38, 38)
                 .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TxtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(TxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
                     .addComponent(TxtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel11)
+                    .addComponent(TxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(27, 27, 27)
+                .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(TxtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -309,20 +350,26 @@ public class ViewCliente extends javax.swing.JFrame {
                     .addComponent(TxtComplemento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnProximo)
-                    .addComponent(BtnAnterior)
-                    .addComponent(jLabel10)
-                    .addComponent(BtnNovoEndereco)
-                    .addComponent(LabelIdEndereco))
+                    .addComponent(BtnAnterior, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
+                    .addComponent(LabelIdEndereco)
+                    .addComponent(BtnNovoEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BtnProximo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BtnMaisUmEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BtnEditarEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BtnExcluirEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel10))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(149, 149, 149)
                 .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnSalvar)
+                    .addComponent(BtnVoltarCadastro)
                     .addComponent(BtnLimpar)
-                    .addComponent(BtnVoltarCadastro))
-                .addContainerGap(217, Short.MAX_VALUE))
+                    .addComponent(BtnSalvar))
+                .addGap(22, 22, 22))
         );
+
+        BtnProximo.getAccessibleContext().setAccessibleName("");
+        BtnAnterior.getAccessibleContext().setAccessibleName("");
 
         TabbledPanelCliente.addTab("Cadastro", PanelCadastro);
 
@@ -343,6 +390,10 @@ public class ViewCliente extends javax.swing.JFrame {
     private void TxtEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtEntregaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtEntregaActionPerformed
+
+    private void TxtBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtBairroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtBairroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -498,11 +549,26 @@ public class ViewCliente extends javax.swing.JFrame {
         BtnVoltarBusca.addActionListener(listenerForjButtonVoltar);
     }
     
+    public void novoEnderecoListener(ActionListener listenerForjButtonNovoEndereco){
+        BtnNovoEndereco.addActionListener(listenerForjButtonNovoEndereco);
+    }
+    
+    public void proximoEndereco(ActionListener listenerForjButtonProximoEndereco){
+        BtnProximo.addActionListener(listenerForjButtonProximoEndereco);
+    }
+    
+    public void enderecoAnterior(ActionListener listenerForjButtonEnderecoAnterior){
+        BtnAnterior.addActionListener(listenerForjButtonEnderecoAnterior);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAnterior;
+    private javax.swing.JButton BtnEditarEndereco;
     private javax.swing.JButton BtnExcluir;
+    private javax.swing.JButton BtnExcluirEndereco;
     private javax.swing.JButton BtnLimpar;
     private javax.swing.JButton BtnLimparBusca;
+    private javax.swing.JButton BtnMaisUmEndereco;
     private javax.swing.JButton BtnNovoEndereco;
     private javax.swing.JButton BtnProximo;
     private javax.swing.JButton BtnSalvar;
@@ -526,6 +592,7 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -538,5 +605,6 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField jTextFieldEmail;
     // End of variables declaration//GEN-END:variables
 }

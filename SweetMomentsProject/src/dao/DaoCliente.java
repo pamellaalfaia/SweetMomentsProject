@@ -17,32 +17,35 @@ import model.ModelCliente;
  * @author Pamella
  */
 public class DaoCliente {
+
     private final Connection conexao;
 
     public DaoCliente() {
         this.conexao = new Conexao().getConnection();
     }
-    
-    public int getCodigoAtual() throws SQLException{
+
+    public int getCodigoAtual() throws SQLException {
         int codigo = 0;
         String sql = "select max(id) from cliente";
         try {
             // prepared statement para inserção
             PreparedStatement stmt = conexao.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
-            
-                codigo = rs.getInt(1);
-                rs.close();
-                stmt.close();
-                conexao.close();
-            
+            while (rs.next()) {
+                codigo = rs.getInt("max(id)");
+            }
+            rs.close();
+            stmt.close();
+            conexao.close();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return codigo+1;
-    }   
+        return codigo + 1;
+    }
 
     public void adiciona(ModelCliente cliente) throws SQLException, ParseException {
+        Connection conexao = new Conexao().getConnection();
         String sql = "insert into cliente "
                 + "(id,nome,telefone)"
                 + " values (?,?,?)";

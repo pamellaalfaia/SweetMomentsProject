@@ -8,6 +8,7 @@ package model;
 import controller.ControllerCliente;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -19,6 +20,7 @@ public class ModelEndereco {
     private final dao.DaoEndereco theDao = new dao.DaoEndereco();
     int id, idCliente, numero, tempoMedioParaEntrega;
     String descricao, rua, bairro, complemento;
+    ArrayList<ModelEndereco> enderecos = new ArrayList<ModelEndereco>();
 
     public ModelEndereco() {
     }
@@ -97,10 +99,18 @@ public class ModelEndereco {
     public void setComplemento(String complemento) {
         this.complemento = complemento;
     }
-    
-    public void adicionarEndereco(ModelEndereco endereco) {
+
+    public ArrayList<ModelEndereco> getEnderecos() {
+        return enderecos;
+    }
+
+    public void setEnderecos(ArrayList<ModelEndereco> enderecos) {
+        this.enderecos = enderecos;
+    }
+        
+    public void adicionarEndereco(ArrayList<ModelEndereco> enderecos) {
         try {
-            theDao.adiciona(endereco);
+            theDao.adiciona(enderecos);
         } catch (SQLException | ParseException ex) {
             Logger.getLogger(ControllerCliente.class.getName()).log(Level.SEVERE, null, ex);
         }

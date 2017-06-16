@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import model.ModelCliente;
 import model.ModelEndereco;
 
@@ -18,26 +19,28 @@ import model.ModelEndereco;
  * @author Pamella
  */
 public class DaoEndereco {
+
     private final Connection conexao;
     int codigoCliente;
 
     public DaoEndereco() {
         this.conexao = new Conexao().getConnection();
     }
-    
-    public int getCodigoAtual(ModelCliente cliente) throws SQLException{
+
+    public int getCodigoAtual(ModelCliente cliente) throws SQLException {
+        Connection conexao = new Conexao().getConnection();
         int codigo = 0;
         codigoCliente = cliente.getId();
-        String sql = "select max(id) from endereco e, cliente c where c.id = ?";
+        String sql = "select max(e.id) from endereco e, cliente c where c.id = e.idCliente and c.id = ?";
         try {
             // prepared statement para inserção
             PreparedStatement stmt = conexao.prepareStatement(sql);
 
-        // seta os valores
+            // seta os valores
             stmt.setInt(1, codigoCliente);
-            
+
             ResultSet rs = stmt.executeQuery();
-            
+
             while (rs.next()) {
                 codigo = rs.getInt(1);
             }
@@ -47,30 +50,36 @@ public class DaoEndereco {
             throw new RuntimeException(e);
         }
         conexao.close();
-        if (codigo == 0)
+        if (codigo == 0) {
             return 1;
+        }
         return codigo;
-    }   
+    }
 
-    public void adiciona(ModelEndereco endereco) throws SQLException, ParseException {
-        String sql = "insert into endereco "
-                + "(id,idCliente,numero,tempoMedioEntrega,descricao,rua,bairro,complemento)"
-                + " values (?,?,?,?,?,?,?,?)";
-        try {
-            try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
-                stmt.setInt(1, endereco.getId());
-                stmt.setInt(2, codigoCliente);
-                stmt.setInt(3, endereco.getNumero());
-                stmt.setInt(4, endereco.getTempoMedioParaEntrega());
-                stmt.setString(5, endereco.getDescricao());
-                stmt.setString(6, endereco.getRua());
-                stmt.setString(7, endereco.getBairro());
-                stmt.setString(8, endereco.getComplemento());
-                stmt.execute();
+    public void adiciona(ArrayList<ModelEndereco> enderecos) throws SQLException, ParseException {
+
+        for (int i = 0; i < enderecos.size(); i++) {
+            Connection conexao = new Conexao().getConnection();
+            String sql = "insert into endereco "
+                    + "(id,idCliente,numero,tempoMedioEntrega,descricao,rua,bairro,complemento)"
+                    + " values (?,?,?,?,?,?,?,?)";
+            try {
+                try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+                    stmt.setInt(1, enderecos.get(i).getId());
+                    stmt.setInt(2, enderecos.get(i).getIdCliente());
+                    stmt.setInt(3, enderecos.get(i).getNumero());
+                    stmt.setInt(4, enderecos.get(i).getTempoMedioParaEntrega());
+                    stmt.setString(5, enderecos.get(i).getDescricao());
+                    stmt.setString(6, enderecos.get(i).getRua());
+                    stmt.setString(7, enderecos.get(i).getBairro());
+                    stmt.setString(8, enderecos.get(i).getComplemento());
+                    stmt.execute();
+                    
+                }
+                conexao.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
-            conexao.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
     }
 }
