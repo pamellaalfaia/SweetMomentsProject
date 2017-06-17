@@ -88,7 +88,7 @@ public class ControllerCliente {
              theView.setLabelMapa("");
              Image imagenMapa = null;
                 try {
-                    imagenMapa = ObjStaticMaps.getStaticMap(theView.getRua(),20,new Dimension(200,200),1,StaticMaps.Format.png,StaticMaps.Maptype.roadmap);
+                    imagenMapa = ObjStaticMaps.getStaticMap(theView.getRua(),14,new Dimension(500,500),1,StaticMaps.Format.png,StaticMaps.Maptype.roadmap);
                 } catch (MalformedURLException ex) {
                     Logger.getLogger(ControllerCliente.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (UnsupportedEncodingException ex) {
