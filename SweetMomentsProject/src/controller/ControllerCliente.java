@@ -5,10 +5,19 @@
  */
 package controller;
 
+import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import maps.java.StaticMaps;
 import model.ModelCliente;
 import model.ModelEndereco;
 
@@ -20,6 +29,7 @@ public class ControllerCliente {
     private view.ViewCliente theView;
     private model.ModelCliente modelCliente;
     private model.ModelEndereco modelEndereco;
+    private StaticMaps ObjStaticMaps=new StaticMaps();
     
     ArrayList<ModelEndereco> enderecos = new ArrayList<ModelEndereco>();
  //   ModelEndereco endereco[] = new (ModelEndereco[]);
@@ -71,6 +81,28 @@ public class ControllerCliente {
      //       modelCliente.adicionarCliente(cliente);
      //       theView.setIdEndereco(modelEndereco.proximoCodigo(cliente));
      //       modelEndereco.adicionarEndereco(new ModelEndereco(idEndereco,idCliente,numero,tempoMedioParaEntrega,descricao,rua,bairro,complemento));
+       
+        //(String centerAddress,int zoom,Dimension size,int scale,Format format, Maptype maptype) 
+     //mapa
+         if(!theView.getLabelMapa().isEmpty()){
+             theView.setLabelMapa("");
+             Image imagenMapa = null;
+                try {
+                    imagenMapa = ObjStaticMaps.getStaticMap(theView.getRua(),20,new Dimension(200,200),1,StaticMaps.Format.png,StaticMaps.Maptype.roadmap);
+                } catch (MalformedURLException ex) {
+                    Logger.getLogger(ControllerCliente.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (UnsupportedEncodingException ex) {
+                    Logger.getLogger(ControllerCliente.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            if(imagenMapa!=null){
+                ImageIcon imgIcon=new ImageIcon(imagenMapa);
+                Icon iconImage=(Icon)imgIcon;
+                theView.setLabelMapa(iconImage);
+            }
+         }
+     
+        
+        
         }
     }
 
