@@ -38,6 +38,8 @@ public class ViewCliente extends javax.swing.JFrame {
         jButtonEditarEndereco.setIcon(editarEndereco);
         ImageIcon excluirEndereco = new ImageIcon("Images/delete.png");
         jButtonExcluirEndereco.setIcon(excluirEndereco);
+        ImageIcon direcoes = new ImageIcon("Images/road_sign.png");
+        jButtonDirecoes.setIcon(direcoes);
     }
 
     /**
@@ -101,6 +103,7 @@ public class ViewCliente extends javax.swing.JFrame {
         jSeparator4 = new javax.swing.JSeparator();
         jLabel16 = new javax.swing.JLabel();
         jFormattedTextFieldTelefone = new javax.swing.JFormattedTextField();
+        jButtonDirecoes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Doceira - Clientes");
@@ -237,6 +240,8 @@ public class ViewCliente extends javax.swing.JFrame {
 
         jFormattedTextFieldTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("(##)#########"))));
 
+        jButtonDirecoes.setEnabled(false);
+
         javax.swing.GroupLayout PanelCadastroLayout = new javax.swing.GroupLayout(PanelCadastro);
         PanelCadastro.setLayout(PanelCadastroLayout);
         PanelCadastroLayout.setHorizontalGroup(
@@ -265,70 +270,6 @@ public class ViewCliente extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCadastroLayout.createSequentialGroup()
-                .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(PanelCadastroLayout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addGroup(PanelCadastroLayout.createSequentialGroup()
-                                .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(PanelCadastroLayout.createSequentialGroup()
-                                        .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel7)
-                                            .addComponent(jLabel9)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel4))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(PanelCadastroLayout.createSequentialGroup()
-                                                .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(jComboBoxTipoLogradouro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(TxtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(29, 36, Short.MAX_VALUE)
-                                                .addComponent(jLabel6)
-                                                .addGap(12, 12, 12)
-                                                .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                    .addComponent(jTextFieldLogradouro, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
-                                                    .addComponent(TxtBairro)))
-                                            .addComponent(TxtComplemento)
-                                            .addComponent(TxtDescricao)))
-                                    .addGroup(PanelCadastroLayout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextFieldTempoEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(25, 25, 25)
-                                        .addComponent(jLabel15)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextFieldDistanciaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(25, 25, 25)
-                                        .addComponent(jLabel14)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jTextFieldCustoEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(PanelCadastroLayout.createSequentialGroup()
-                                        .addComponent(jLabel16)
-                                        .addGap(10, 10, 10)
-                                        .addComponent(jSeparator4)))
-                                .addGap(33, 33, 33)
-                                .addComponent(jLabelMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(PanelCadastroLayout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jButtonSalvarEndereco)
-                        .addGap(31, 31, 31)
-                        .addComponent(jButtonNovoEndereco)
-                        .addGap(33, 33, 33)
-                        .addComponent(jButtonEditarEndereco)
-                        .addGap(34, 34, 34)
-                        .addComponent(jButtonExcluirEndereco)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonEnderecoAnterior)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LabelPaginaEndereco)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButtonProximoEndereco)))
-                .addGap(30, 30, 30))
             .addComponent(jSeparator2)
             .addGroup(PanelCadastroLayout.createSequentialGroup()
                 .addGap(133, 133, 133)
@@ -338,6 +279,73 @@ public class ViewCliente extends javax.swing.JFrame {
                 .addGap(129, 129, 129)
                 .addComponent(jButtonVoltarTelaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCadastroLayout.createSequentialGroup()
+                .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCadastroLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jButtonSalvarEndereco)
+                        .addGap(31, 31, 31)
+                        .addComponent(jButtonNovoEndereco)
+                        .addGap(33, 33, 33)
+                        .addComponent(jButtonEditarEndereco)
+                        .addGap(34, 34, 34)
+                        .addComponent(jButtonExcluirEndereco)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonDirecoes))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCadastroLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addGroup(PanelCadastroLayout.createSequentialGroup()
+                                    .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(PanelCadastroLayout.createSequentialGroup()
+                                            .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jLabel7)
+                                                .addComponent(jLabel9)
+                                                .addComponent(jLabel5)
+                                                .addComponent(jLabel4))
+                                            .addGap(18, 18, 18)
+                                            .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addGroup(PanelCadastroLayout.createSequentialGroup()
+                                                    .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addComponent(jComboBoxTipoLogradouro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(TxtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGap(29, 36, Short.MAX_VALUE)
+                                                    .addComponent(jLabel6)
+                                                    .addGap(12, 12, 12)
+                                                    .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                        .addComponent(jTextFieldLogradouro, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                                                        .addComponent(TxtBairro)))
+                                                .addComponent(TxtComplemento)
+                                                .addComponent(TxtDescricao)))
+                                        .addGroup(PanelCadastroLayout.createSequentialGroup()
+                                            .addComponent(jLabel8)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jTextFieldTempoEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(25, 25, 25)
+                                            .addComponent(jLabel15)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jTextFieldDistanciaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(25, 25, 25)
+                                            .addComponent(jLabel14)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(jTextFieldCustoEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(PanelCadastroLayout.createSequentialGroup()
+                                            .addComponent(jLabel16)
+                                            .addGap(10, 10, 10)
+                                            .addComponent(jSeparator4)))
+                                    .addGap(33, 33, 33)
+                                    .addComponent(jLabelMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCadastroLayout.createSequentialGroup()
+                                .addComponent(jButtonEnderecoAnterior)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LabelPaginaEndereco)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonProximoEndereco)))))
+                .addGap(30, 30, 30))
         );
         PanelCadastroLayout.setVerticalGroup(
             PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -409,26 +417,29 @@ public class ViewCliente extends javax.swing.JFrame {
                 .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelCadastroLayout.createSequentialGroup()
                         .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButtonEnderecoAnterior, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
-                            .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(LabelPaginaEndereco)
-                                .addComponent(jLabel10))
-                            .addComponent(jButtonProximoEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonEditarEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButtonExcluirEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButtonEditarEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                            .addComponent(jButtonExcluirEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonDirecoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(PanelCadastroLayout.createSequentialGroup()
                         .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonNovoEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonSalvarEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31)))
+                        .addGap(24, 24, 24)))
+                .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonEnderecoAnterior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(LabelPaginaEndereco)
+                        .addComponent(jLabel10))
+                    .addComponent(jButtonProximoEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonSalvarTelaCadastro)
                     .addComponent(jButtonLimparTelaCadastro)
                     .addComponent(jButtonVoltarTelaCadastro))
-                .addGap(23, 23, 23))
+                .addContainerGap())
         );
 
         TabbledPanelCliente.addTab("Cadastro", PanelCadastro);
@@ -595,7 +606,7 @@ public class ViewCliente extends javax.swing.JFrame {
         return jTextFieldCustoEntrega.getText();
     }
 
-    public void setCustoEntrega(Float custoEntrega) {
+    public void setCustoEntrega(Double custoEntrega) {
         jTextFieldCustoEntrega.setText(custoEntrega.toString());
     }
 
@@ -670,6 +681,10 @@ public class ViewCliente extends javax.swing.JFrame {
     public void voltarDaBuscaListener(ActionListener listenerForjButtonVoltar) {
         jButtonVoltarTelaBusca.addActionListener(listenerForjButtonVoltar);
     }
+    
+    public void exibirRotaListener(ActionListener listenerForjButtonDirecoes){
+        jButtonDirecoes.addActionListener(listenerForjButtonDirecoes);
+    }
 
     public void jTextFieldComplementoListener(FocusListener listenerForjFieldComplemento) {
         TxtComplemento.addFocusListener(listenerForjFieldComplemento);
@@ -726,6 +741,10 @@ public class ViewCliente extends javax.swing.JFrame {
     public void enabledVoltarDaBusca(boolean x) {
         jButtonVoltarTelaBusca.setEnabled(x);
     }
+    
+    public void enabledRota(boolean x) {
+        jButtonDirecoes.setEnabled(x);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelPaginaEndereco;
@@ -739,6 +758,7 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JTextField TxtId;
     private javax.swing.JTextField TxtNome;
     private javax.swing.JTextField TxtNumero;
+    private javax.swing.JButton jButtonDirecoes;
     private javax.swing.JButton jButtonEditarEndereco;
     private javax.swing.JButton jButtonEnderecoAnterior;
     private javax.swing.JButton jButtonExcluirEndereco;

@@ -18,15 +18,16 @@ import java.util.logging.Logger;
 public class ModelCliente {
     private final dao.DaoCliente theDao = new dao.DaoCliente();
     int id;
-    String nome, telefone;
+    String nome, telefone, email;
 
     public ModelCliente() {
     }
 
-    public ModelCliente(int id, String nome, String telefone) {
+    public ModelCliente(int id, String nome, String telefone, String email) {
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
+        this.email = email;
     }
     
     public int getId() {
@@ -53,6 +54,14 @@ public class ModelCliente {
         this.telefone = telefone;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
     public void adicionarCliente(ModelCliente cliente) {
         try {
             theDao.adiciona(cliente);

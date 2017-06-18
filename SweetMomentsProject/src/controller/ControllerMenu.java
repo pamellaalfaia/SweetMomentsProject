@@ -34,7 +34,8 @@ public class ControllerMenu {
             view.ViewCliente theView = new view.ViewCliente();
             model.ModelCliente modelCliente = new model.ModelCliente();
             model.ModelEndereco modelEndereco = new model.ModelEndereco();
-            controller.ControllerCliente theController = new controller.ControllerCliente(theView, modelCliente, modelEndereco);
+            view.ViewClienteRota theViewClienteRota = new view.ViewClienteRota();
+            controller.ControllerCliente theController = new controller.ControllerCliente(theView, modelCliente, modelEndereco, theViewClienteRota);
             try {
                 theController.setFrameVisible();
             } catch (SQLException ex) {

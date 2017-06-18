@@ -47,13 +47,14 @@ public class DaoCliente {
     public void adiciona(ModelCliente cliente) throws SQLException, ParseException {
         Connection conexao = new Conexao().getConnection();
         String sql = "insert into cliente "
-                + "(id,nome,telefone)"
-                + " values (?,?,?)";
+                + "(id,nome,telefone,email)"
+                + " values (?,?,?,?)";
         try {
             try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
                 stmt.setInt(1, cliente.getId());
                 stmt.setString(2, cliente.getNome());
                 stmt.setString(3, cliente.getTelefone());
+                stmt.setString(4, cliente.getEmail());
                 stmt.execute();
             }
             conexao.close();

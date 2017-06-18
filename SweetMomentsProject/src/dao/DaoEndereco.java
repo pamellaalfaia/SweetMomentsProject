@@ -60,8 +60,8 @@ public class DaoEndereco {
         for (int i = 0; i < enderecos.size(); i++) {
             Connection conexao = new Conexao().getConnection();
             String sql = "insert into endereco "
-                    + "(id,idCliente,numero,tempoMedioEntrega,descricao,rua,bairro,complemento)"
-                    + " values (?,?,?,?,?,?,?,?)";
+                    + "(id,idCliente,numero,tempoMedioEntrega,descricao,logradouro,bairro,complemento,tipoDeLogradouro,custoEntrega,distanciaEntrega)"
+                    + " values (?,?,?,?,?,?,?,?,?,?,?)";
             try {
                 try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
                     stmt.setInt(1, enderecos.get(i).getId());
@@ -69,9 +69,12 @@ public class DaoEndereco {
                     stmt.setInt(3, enderecos.get(i).getNumero());
                     stmt.setInt(4, enderecos.get(i).getTempoMedioParaEntrega());
                     stmt.setString(5, enderecos.get(i).getDescricao());
-                    stmt.setString(6, enderecos.get(i).getRua());
+                    stmt.setString(6, enderecos.get(i).getLogradouro());
                     stmt.setString(7, enderecos.get(i).getBairro());
                     stmt.setString(8, enderecos.get(i).getComplemento());
+                    stmt.setString(9, enderecos.get(i).getTipoLogradouro());
+                    stmt.setDouble(10, enderecos.get(i).getCustoEntrega());
+                    stmt.setDouble(11, enderecos.get(i).getDistanciaEntrega());
                     stmt.execute();  
                 }
                 conexao.close();

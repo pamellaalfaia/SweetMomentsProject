@@ -19,21 +19,25 @@ import java.util.logging.Logger;
 public class ModelEndereco {
     private final dao.DaoEndereco theDao = new dao.DaoEndereco();
     int id, idCliente, numero, tempoMedioParaEntrega;
-    String descricao, rua, bairro, complemento;
+    String descricao, logradouro, bairro, complemento, tipoLogradouro;
+    Double custoEntrega, distanciaEntrega;
     ArrayList<ModelEndereco> enderecos = new ArrayList<ModelEndereco>();
 
     public ModelEndereco() {
     }
     
-    public ModelEndereco(int id, int idCliente, int numero, int tempoMedioParaEntrega, String descricao, String rua, String bairro, String complemento) {
+    public ModelEndereco(int id, int idCliente, int numero, int tempoMedioParaEntrega, String descricao, String logradouro, String bairro, String complemento, String tipoLogradouro, Double custoEntrega, Double distanciaEntrega) {
         this.id = id;
         this.idCliente = idCliente;
         this.numero = numero;
         this.tempoMedioParaEntrega = tempoMedioParaEntrega;
         this.descricao = descricao;
-        this.rua = rua;
+        this.logradouro = logradouro;
         this.bairro = bairro;
         this.complemento = complemento;
+        this.tipoLogradouro = tipoLogradouro;
+        this.custoEntrega = custoEntrega;
+        this.distanciaEntrega = distanciaEntrega;
     }
 
     public int getId() {
@@ -76,14 +80,6 @@ public class ModelEndereco {
         this.descricao = descricao;
     }
 
-    public String getRua() {
-        return rua;
-    }
-
-    public void setRua(String rua) {
-        this.rua = rua;
-    }
-
     public String getBairro() {
         return bairro;
     }
@@ -107,7 +103,39 @@ public class ModelEndereco {
     public void setEnderecos(ArrayList<ModelEndereco> enderecos) {
         this.enderecos = enderecos;
     }
-        
+
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public String getTipoLogradouro() {
+        return tipoLogradouro;
+    }
+
+    public void setTipoLogradouro(String tipoLogradouro) {
+        this.tipoLogradouro = tipoLogradouro;
+    }
+
+    public Double getCustoEntrega() {
+        return custoEntrega;
+    }
+
+    public void setCustoEntrega(Double custoEntrega) {
+        this.custoEntrega = custoEntrega;
+    }
+
+    public Double getDistanciaEntrega() {
+        return distanciaEntrega;
+    }
+
+    public void setDistanciaEntrega(Double distanciaEntrega) {
+        this.distanciaEntrega = distanciaEntrega;
+    }
+            
     public void adicionarEndereco(ArrayList<ModelEndereco> enderecos) {
         try {
             theDao.adiciona(enderecos);
