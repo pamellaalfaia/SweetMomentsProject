@@ -57,7 +57,6 @@ public class DaoEndereco {
     }
 
     public void adiciona(ArrayList<ModelEndereco> enderecos) throws SQLException, ParseException {
-
         for (int i = 0; i < enderecos.size(); i++) {
             Connection conexao = new Conexao().getConnection();
             String sql = "insert into endereco "
@@ -73,8 +72,7 @@ public class DaoEndereco {
                     stmt.setString(6, enderecos.get(i).getRua());
                     stmt.setString(7, enderecos.get(i).getBairro());
                     stmt.setString(8, enderecos.get(i).getComplemento());
-                    stmt.execute();
-                    
+                    stmt.execute();  
                 }
                 conexao.close();
             } catch (SQLException e) {

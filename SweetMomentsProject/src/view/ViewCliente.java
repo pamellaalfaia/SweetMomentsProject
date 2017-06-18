@@ -7,6 +7,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
@@ -22,25 +23,21 @@ public class ViewCliente extends javax.swing.JFrame {
      */
     public ViewCliente() {
         initComponents();
-        
+
         this.getContentPane().setBackground(Color.white);
-        
+
         ImageIcon check = new ImageIcon("Images/success-menor.png");
-        BtnNovoEndereco.setIcon(check);
+        jButtonSalvarEndereco.setIcon(check);
         ImageIcon proximo = new ImageIcon("Images/next-azul-menor.png");
-        BtnProximo.setIcon(proximo);
+        jButtonProximoEndereco.setIcon(proximo);
         ImageIcon anterior = new ImageIcon("Images/previous-azul-menor.png");
-        BtnAnterior.setIcon(anterior);
+        jButtonEnderecoAnterior.setIcon(anterior);
         ImageIcon novoEndereco = new ImageIcon("Images/plus-menor.png");
-        BtnMaisUmEndereco.setIcon(novoEndereco);
+        jButtonNovoEndereco.setIcon(novoEndereco);
         ImageIcon editarEndereco = new ImageIcon("Images/edit.png");
-        BtnEditarEndereco.setIcon(editarEndereco);
+        jButtonEditarEndereco.setIcon(editarEndereco);
         ImageIcon excluirEndereco = new ImageIcon("Images/delete.png");
-        BtnExcluirEndereco.setIcon(excluirEndereco);
-        
-        
-     //   jLabel13.setText("<html><body><iframe width=\"250\" height=\"250\" frameborder=\"0\" style=\"border:0\" src=\"https://www.google.com/maps/embed/v1/search?key=AIzaSyCPgMAQV3mUYuO8rtaZILiyexwTIfpg9qA&q=record+stores+in+Seattle\"></body></html>");
-     
+        jButtonExcluirEndereco.setIcon(excluirEndereco);
     }
 
     /**
@@ -57,55 +54,56 @@ public class ViewCliente extends javax.swing.JFrame {
         jTextField9 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableCliente = new javax.swing.JTable();
-        BtnVisualizar = new javax.swing.JButton();
-        BtnLimparBusca = new javax.swing.JButton();
-        BtnExcluir = new javax.swing.JButton();
-        BtnVoltarBusca = new javax.swing.JButton();
+        jButtonVisualizarTelaBusca = new javax.swing.JButton();
+        jButtonLimparTelaBusca = new javax.swing.JButton();
+        jButtonExcluirTelaBusca = new javax.swing.JButton();
+        jButtonVoltarTelaBusca = new javax.swing.JButton();
         PanelCadastro = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
-        BtnSalvar = new javax.swing.JButton();
+        jButtonSalvarTelaCadastro = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        BtnLimpar = new javax.swing.JButton();
-        BtnVoltarCadastro = new javax.swing.JButton();
+        jButtonLimparTelaCadastro = new javax.swing.JButton();
+        jButtonVoltarTelaCadastro = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         TxtDescricao = new javax.swing.JTextField();
-        TxtRua = new javax.swing.JTextField();
+        jTextFieldLogradouro = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         TxtBairro = new javax.swing.JTextField();
         TxtNome = new javax.swing.JTextField();
         TxtComplemento = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         TxtNumero = new javax.swing.JTextField();
-        TxtTelefone = new javax.swing.JTextField();
-        TxtEntrega = new javax.swing.JTextField();
-        BtnProximo = new javax.swing.JButton();
-        BtnNovoEndereco = new javax.swing.JButton();
-        BtnAnterior = new javax.swing.JButton();
+        jTextFieldTempoEntrega = new javax.swing.JTextField();
+        jButtonProximoEndereco = new javax.swing.JButton();
+        jButtonSalvarEndereco = new javax.swing.JButton();
+        jButtonEnderecoAnterior = new javax.swing.JButton();
         TxtId = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        LabelIdEndereco = new javax.swing.JLabel();
+        LabelPaginaEndereco = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jTextFieldEmail = new javax.swing.JTextField();
-        BtnMaisUmEndereco = new javax.swing.JButton();
-        BtnEditarEndereco = new javax.swing.JButton();
-        BtnExcluirEndereco = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
+        jButtonNovoEndereco = new javax.swing.JButton();
+        jButtonEditarEndereco = new javax.swing.JButton();
+        jButtonExcluirEndereco = new javax.swing.JButton();
+        jLabelMapa = new javax.swing.JLabel();
         jComboBoxTipoLogradouro = new javax.swing.JComboBox<>();
         jLabel14 = new javax.swing.JLabel();
-        TxtEntrega1 = new javax.swing.JTextField();
+        jTextFieldCustoEntrega = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        TxtEntrega2 = new javax.swing.JTextField();
+        jTextFieldDistanciaEntrega = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel16 = new javax.swing.JLabel();
+        jFormattedTextFieldTelefone = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Doceira - Clientes");
 
         TabbledPanelCliente.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -126,16 +124,16 @@ public class ViewCliente extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(TableCliente);
 
-        BtnVisualizar.setBackground(new java.awt.Color(255, 204, 255));
-        BtnVisualizar.setText("Visualizar");
-        BtnVisualizar.setEnabled(false);
+        jButtonVisualizarTelaBusca.setBackground(new java.awt.Color(255, 204, 255));
+        jButtonVisualizarTelaBusca.setText("Visualizar");
+        jButtonVisualizarTelaBusca.setEnabled(false);
 
-        BtnLimparBusca.setBackground(new java.awt.Color(102, 102, 255));
-        BtnLimparBusca.setText("Limpar");
+        jButtonLimparTelaBusca.setBackground(new java.awt.Color(102, 102, 255));
+        jButtonLimparTelaBusca.setText("Limpar");
 
-        BtnExcluir.setText("Excluir");
+        jButtonExcluirTelaBusca.setText("Excluir");
 
-        BtnVoltarBusca.setText("Voltar ao Menu");
+        jButtonVoltarTelaBusca.setText("Voltar ao Menu");
 
         javax.swing.GroupLayout PanelBuscaLayout = new javax.swing.GroupLayout(PanelBusca);
         PanelBusca.setLayout(PanelBuscaLayout);
@@ -145,13 +143,13 @@ public class ViewCliente extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(PanelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelBuscaLayout.createSequentialGroup()
-                        .addComponent(BtnVisualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonVisualizarTelaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(72, 72, 72)
-                        .addComponent(BtnLimparBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonLimparTelaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BtnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonExcluirTelaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(72, 72, 72)
-                        .addComponent(BtnVoltarBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButtonVoltarTelaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 911, Short.MAX_VALUE)
                     .addComponent(jTextField9))
                 .addGap(22, 22, 22))
@@ -165,10 +163,10 @@ public class ViewCliente extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                 .addGroup(PanelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnVisualizar)
-                    .addComponent(BtnLimparBusca)
-                    .addComponent(BtnExcluir)
-                    .addComponent(BtnVoltarBusca))
+                    .addComponent(jButtonVisualizarTelaBusca)
+                    .addComponent(jButtonLimparTelaBusca)
+                    .addComponent(jButtonExcluirTelaBusca)
+                    .addComponent(jButtonVoltarTelaBusca))
                 .addGap(25, 25, 25))
         );
 
@@ -181,7 +179,8 @@ public class ViewCliente extends javax.swing.JFrame {
         jSeparator2.setToolTipText("");
         jSeparator2.setName(""); // NOI18N
 
-        BtnSalvar.setText("Salvar");
+        jButtonSalvarTelaCadastro.setText("Salvar");
+        jButtonSalvarTelaCadastro.setEnabled(false);
 
         jSeparator1.setToolTipText("");
         jSeparator1.setName(""); // NOI18N
@@ -190,9 +189,9 @@ public class ViewCliente extends javax.swing.JFrame {
 
         jLabel4.setText("Descrição");
 
-        BtnLimpar.setText("Limpar");
+        jButtonLimparTelaCadastro.setText("Limpar");
 
-        BtnVoltarCadastro.setText("Voltar");
+        jButtonVoltarTelaCadastro.setText("Voltar");
 
         jLabel5.setText("Logradouro");
 
@@ -206,55 +205,37 @@ public class ViewCliente extends javax.swing.JFrame {
 
         jLabel1.setText("Nome");
 
-        TxtBairro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtBairroActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Telefone");
 
-        TxtEntrega.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtEntregaActionPerformed(evt);
-            }
-        });
+        jTextFieldTempoEntrega.setEnabled(false);
 
         TxtId.setEnabled(false);
 
         jLabel11.setText("ID");
 
-        LabelIdEndereco.setText("1");
+        LabelPaginaEndereco.setText("1");
 
         jLabel12.setText("E-mail");
 
-        BtnMaisUmEndereco.setEnabled(false);
+        jButtonNovoEndereco.setEnabled(false);
 
-        BtnEditarEndereco.setEnabled(false);
+        jButtonEditarEndereco.setEnabled(false);
 
-        BtnExcluirEndereco.setEnabled(false);
+        jButtonExcluirEndereco.setEnabled(false);
 
-        jLabel13.setText("jLabel13");
-
-        jComboBoxTipoLogradouro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Avenida", "Rua" }));
+        jComboBoxTipoLogradouro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aeroporto", "Alameda", "Área", "Avenida", "Campo", "Chácara", "Colônia", "Condomínio", "Conjunto", "Distrito", "Esplanada", "Estação", "Estrada", "Favela", "Fazenda", "Feira", "Jardim", "Ladeira", "Lago", "Lagoa", "Largo", "Loteamento", "Morro", "Núcleo", "Parque", "Passarela", "Pátio", "Praça", "Quadra", "Recanto", "Residencial", "Rodovia", "Rua", "Setor", "Sítio", "Travessa", "Trecho", "Trevo", "Vale", "Vereda", "Via", "Viaduto", "Viela", "Vila" }));
 
         jLabel14.setText("Custo");
 
-        TxtEntrega1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtEntrega1ActionPerformed(evt);
-            }
-        });
+        jTextFieldCustoEntrega.setEnabled(false);
 
         jLabel15.setText("Km");
 
-        TxtEntrega2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtEntrega2ActionPerformed(evt);
-            }
-        });
+        jTextFieldDistanciaEntrega.setEnabled(false);
 
         jLabel16.setText("Informações da entrega");
+
+        jFormattedTextFieldTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("(##)#########"))));
 
         javax.swing.GroupLayout PanelCadastroLayout = new javax.swing.GroupLayout(PanelCadastro);
         PanelCadastro.setLayout(PanelCadastroLayout);
@@ -262,22 +243,24 @@ public class ViewCliente extends javax.swing.JFrame {
             PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator1)
             .addGroup(PanelCadastroLayout.createSequentialGroup()
-                .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelCadastroLayout.createSequentialGroup()
                         .addGap(83, 83, 83)
-                        .addComponent(jLabel11)
-                        .addGap(18, 18, 18)
-                        .addComponent(TxtId, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75)
+                        .addComponent(jLabel11))
+                    .addGroup(PanelCadastroLayout.createSequentialGroup()
+                        .addGap(51, 51, 51)
+                        .addComponent(jLabel2)))
+                .addGap(18, 18, 18)
+                .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(TxtId, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                    .addComponent(jFormattedTextFieldTelefone))
+                .addGap(75, 75, 75)
+                .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(PanelCadastroLayout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
                         .addComponent(TxtNome))
                     .addGroup(PanelCadastroLayout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(TxtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(74, 74, 74)
                         .addComponent(jLabel12)
                         .addGap(18, 18, 18)
                         .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -303,58 +286,57 @@ public class ViewCliente extends javax.swing.JFrame {
                                                     .addComponent(jComboBoxTipoLogradouro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                     .addComponent(TxtNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                 .addGap(29, 36, Short.MAX_VALUE)
-                                                .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(TxtRua, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCadastroLayout.createSequentialGroup()
-                                                        .addComponent(jLabel6)
-                                                        .addGap(12, 12, 12)
-                                                        .addComponent(TxtBairro, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                                .addComponent(jLabel6)
+                                                .addGap(12, 12, 12)
+                                                .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                    .addComponent(jTextFieldLogradouro, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                                                    .addComponent(TxtBairro)))
                                             .addComponent(TxtComplemento)
                                             .addComponent(TxtDescricao)))
                                     .addGroup(PanelCadastroLayout.createSequentialGroup()
                                         .addComponent(jLabel8)
                                         .addGap(18, 18, 18)
-                                        .addComponent(TxtEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextFieldTempoEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(25, 25, 25)
                                         .addComponent(jLabel15)
                                         .addGap(18, 18, 18)
-                                        .addComponent(TxtEntrega2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jTextFieldDistanciaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(25, 25, 25)
                                         .addComponent(jLabel14)
                                         .addGap(18, 18, 18)
-                                        .addComponent(TxtEntrega1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jTextFieldCustoEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(PanelCadastroLayout.createSequentialGroup()
                                         .addComponent(jLabel16)
                                         .addGap(10, 10, 10)
                                         .addComponent(jSeparator4)))
                                 .addGap(33, 33, 33)
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jLabelMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 409, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(PanelCadastroLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addComponent(BtnNovoEndereco)
+                        .addComponent(jButtonSalvarEndereco)
                         .addGap(31, 31, 31)
-                        .addComponent(BtnMaisUmEndereco)
+                        .addComponent(jButtonNovoEndereco)
                         .addGap(33, 33, 33)
-                        .addComponent(BtnEditarEndereco)
+                        .addComponent(jButtonEditarEndereco)
                         .addGap(34, 34, 34)
-                        .addComponent(BtnExcluirEndereco)
+                        .addComponent(jButtonExcluirEndereco)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BtnAnterior)
+                        .addComponent(jButtonEnderecoAnterior)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LabelIdEndereco)
+                        .addComponent(LabelPaginaEndereco)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BtnProximo)))
+                        .addComponent(jButtonProximoEndereco)))
                 .addGap(30, 30, 30))
             .addComponent(jSeparator2)
             .addGroup(PanelCadastroLayout.createSequentialGroup()
                 .addGap(133, 133, 133)
-                .addComponent(BtnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonSalvarTelaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(149, 149, 149)
-                .addComponent(BtnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonLimparTelaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(129, 129, 129)
-                .addComponent(BtnVoltarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonVoltarTelaCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelCadastroLayout.setVerticalGroup(
@@ -371,13 +353,14 @@ public class ViewCliente extends javax.swing.JFrame {
                             .addComponent(jLabel1))))
                 .addGap(27, 27, 27)
                 .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TxtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel12))
                     .addGroup(PanelCadastroLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
-                        .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel12))))
+                            .addComponent(jFormattedTextFieldTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(35, 35, 35)
                 .addComponent(jLabel3)
                 .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -393,7 +376,7 @@ public class ViewCliente extends javax.swing.JFrame {
                             .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jComboBoxTipoLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel5))
-                            .addComponent(TxtRua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jTextFieldLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(25, 25, 25)
                         .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -413,38 +396,38 @@ public class ViewCliente extends javax.swing.JFrame {
                             .addComponent(jLabel16))
                         .addGap(18, 18, 18)
                         .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TxtEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldTempoEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel14)
-                            .addComponent(TxtEntrega1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCustoEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel15)
-                            .addComponent(TxtEntrega2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldDistanciaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCadastroLayout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(jLabelMapa, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelCadastroLayout.createSequentialGroup()
                         .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(BtnAnterior, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                            .addComponent(jButtonEnderecoAnterior, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                             .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(LabelIdEndereco)
+                                .addComponent(LabelPaginaEndereco)
                                 .addComponent(jLabel10))
-                            .addComponent(BtnProximo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BtnEditarEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BtnExcluirEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButtonProximoEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonEditarEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonExcluirEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(PanelCadastroLayout.createSequentialGroup()
                         .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BtnMaisUmEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(BtnNovoEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButtonNovoEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonSalvarEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(31, 31, 31)))
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BtnSalvar)
-                    .addComponent(BtnLimpar)
-                    .addComponent(BtnVoltarCadastro))
+                    .addComponent(jButtonSalvarTelaCadastro)
+                    .addComponent(jButtonLimparTelaCadastro)
+                    .addComponent(jButtonVoltarTelaCadastro))
                 .addGap(23, 23, 23))
         );
 
@@ -465,22 +448,6 @@ public class ViewCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void TxtBairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtBairroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtBairroActionPerformed
-
-    private void TxtEntregaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtEntregaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtEntregaActionPerformed
-
-    private void TxtEntrega1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtEntrega1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtEntrega1ActionPerformed
-
-    private void TxtEntrega2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtEntrega2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtEntrega2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -515,9 +482,7 @@ public class ViewCliente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
-                    new ViewCliente().setVisible(true);
-                
+                new ViewCliente().setVisible(true);
             }
         });
     }
@@ -528,6 +493,70 @@ public class ViewCliente extends javax.swing.JFrame {
 
     public void setTableCliente(JTable TableCliente) {
         this.TableCliente = TableCliente;
+    }
+
+    public String getIdCliente() {
+        return TxtId.getText();
+    }
+
+    public void setIdCliente(int idCliente) {
+        TxtId.setText(String.valueOf(idCliente));
+    }
+
+    public String getNome() {
+        return TxtNome.getText();
+    }
+
+    public void setNome(String nome) {
+        TxtNome.setText(nome);
+    }
+
+    public String getTelefone() {
+        return jFormattedTextFieldTelefone.getText();
+    }
+
+    public void setTelefone(String telefone) {
+        jFormattedTextFieldTelefone.setText(telefone);
+    }
+
+    public String getEmail() {
+        return jTextFieldEmail.getText();
+    }
+
+    public void setEmail(String email) {
+        jTextFieldEmail.setText(email);
+    }
+
+    public String getDescricao() {
+        return TxtDescricao.getText();
+    }
+
+    public void setDescricao(String descricao) {
+        TxtDescricao.setText(descricao);
+    }
+
+    public String getTipoLogradouro() {
+        return jComboBoxTipoLogradouro.getSelectedItem().toString();
+    }
+
+    public void setTipoLogradouro(String tipoLogradouro) {
+        jComboBoxTipoLogradouro.setSelectedItem(tipoLogradouro);
+    }
+
+    public String getLogradouro() {
+        return jTextFieldLogradouro.getText();
+    }
+
+    public void setLogradouro(String rua) {
+        jTextFieldLogradouro.setText(rua);
+    }
+
+    public String getNumero() {
+        return TxtNumero.getText();
+    }
+
+    public void setNumero(String numero) {
+        TxtNumero.setText(numero);
     }
 
     public String getBairro() {
@@ -546,137 +575,160 @@ public class ViewCliente extends javax.swing.JFrame {
         TxtComplemento.setText(complemento);
     }
 
-    public String getDescricao() {
-        return TxtDescricao.getText();
+    public String getTempoEntrega() {
+        return jTextFieldTempoEntrega.getText();
     }
 
-    public void setDescricao(String descricao) {
-        TxtDescricao.setText(descricao);
+    public void setTempoEntrega(String entrega) {
+        jTextFieldTempoEntrega.setText(entrega);
     }
 
-    public String getEntrega() {
-        return TxtEntrega.getText();
+    public String getDistanciaEntrega() {
+        return jTextFieldDistanciaEntrega.getText();
     }
 
-    public void setEntrega(String entrega) {
-        TxtEntrega.setText(entrega);
+    public void setDistanciaEntrega(String entrega) {
+        jTextFieldDistanciaEntrega.setText(entrega);
     }
 
-    public String getNome() {
-        return TxtNome.getText();
+    public String getCustoEntrega() {
+        return jTextFieldCustoEntrega.getText();
     }
 
-    public void setNome(String nome) {
-        TxtNome.setText(nome);
+    public void setCustoEntrega(Float custoEntrega) {
+        jTextFieldCustoEntrega.setText(custoEntrega.toString());
     }
 
-    public String getNumero() {
-        return TxtNumero.getText();
+    public String getPaginaEndereco() {
+        return LabelPaginaEndereco.getText();
     }
 
-    public void setNumero(String numero) {
-        TxtNumero.setText(numero);
+    public void setPaginaEndereco(int idEndereco) {
+        LabelPaginaEndereco.setText(String.valueOf(idEndereco));
     }
 
-    public String getRua() {
-        return TxtRua.getText();
-    }
-
-    public void setRua(String rua) {
-        TxtRua.setText(rua);
-    }
-
-    public String getTelefone() {
-        return TxtTelefone.getText();
-    }
-
-    public void setTelefone(String telefone) {
-        TxtTelefone.setText(telefone);
-    }
-    
-    public String getIdCliente() {
-        return TxtId.getText();
-    }
-
-    public void setIdCliente(int idCliente) {
-        TxtId.setText(String.valueOf(idCliente));
-    }
-    
-    public String getIdEndereco() {
-        return LabelIdEndereco.getText();
-    }
-
-    public void setIdEndereco(int idEndereco) {
-        LabelIdEndereco.setText(String.valueOf(idEndereco));
-    }
-    
     public String getLabelMapa() {
-        return jLabel13.getText();
+        return jLabelMapa.getText();
     }
 
     public void setLabelMapa(String mapa) {
-        jLabel13.setText(String.valueOf(mapa));
+        jLabelMapa.setText(String.valueOf(mapa));
     }
-    
+
     public void setLabelMapa(Icon mapa) {
-        jLabel13.setIcon(mapa);
+        jLabelMapa.setIcon(mapa);
     }
-        
-    public void addClienteListener(ActionListener listenerForjButtonCadastrar){
-        BtnSalvar.addActionListener(listenerForjButtonCadastrar);
+
+    public void salvarCliente(ActionListener listenerForjButtonCadastrar) {
+        jButtonSalvarTelaCadastro.addActionListener(listenerForjButtonCadastrar);
     }
-    
-    public void limparCamposClienteListener(ActionListener listenerForjButtonLimpar){
-        BtnLimpar.addActionListener(listenerForjButtonLimpar);
+
+    public void limparCamposClienteListener(ActionListener listenerForjButtonLimpar) {
+        jButtonLimparTelaCadastro.addActionListener(listenerForjButtonLimpar);
     }
-    
-    public void voltarListener(ActionListener listenerForjButtonVoltar){
-        BtnVoltarCadastro.addActionListener(listenerForjButtonVoltar);
+
+    public void voltarListener(ActionListener listenerForjButtonVoltar) {
+        jButtonVoltarTelaCadastro.addActionListener(listenerForjButtonVoltar);
     }
-    
-    public void visualizarClienteListener(ActionListener listenerForjButtonVisualizar){
-        BtnVisualizar.addActionListener(listenerForjButtonVisualizar);
+
+    public void salvarEnderecoListener(ActionListener listenerForjButtonSalvarEndereco) {
+        jButtonSalvarEndereco.addActionListener(listenerForjButtonSalvarEndereco);
     }
-    
-    public void limparBuscaClienteListener(ActionListener listenerForjButtonLimpar){
-        BtnLimparBusca.addActionListener(listenerForjButtonLimpar);
+
+    public void novoEnderecoListener(ActionListener listenerForjButtonNovoEndereco) {
+        jButtonNovoEndereco.addActionListener(listenerForjButtonNovoEndereco);
     }
-    
-    public void excluirClienteListener(ActionListener listenerForjButtonExcluir){
-        BtnExcluir.addActionListener(listenerForjButtonExcluir);
+
+    public void editarListener(ActionListener listenerForjButtonEditarEndereco) {
+        jButtonEditarEndereco.addActionListener(listenerForjButtonEditarEndereco);
     }
-    
-    public void voltarDaBuscaListener(ActionListener listenerForjButtonVoltar){
-        BtnVoltarBusca.addActionListener(listenerForjButtonVoltar);
+
+    public void excluirListener(ActionListener listenerForjButtonExcluirEndereco) {
+        jButtonExcluirEndereco.addActionListener(listenerForjButtonExcluirEndereco);
     }
-    
-    public void novoEnderecoListener(ActionListener listenerForjButtonNovoEndereco){
-        BtnNovoEndereco.addActionListener(listenerForjButtonNovoEndereco);
+
+    public void proximoEnderecoListener(ActionListener listenerForjButtonProximoEndereco) {
+        jButtonProximoEndereco.addActionListener(listenerForjButtonProximoEndereco);
     }
-    
-    public void proximoEndereco(ActionListener listenerForjButtonProximoEndereco){
-        BtnProximo.addActionListener(listenerForjButtonProximoEndereco);
+
+    public void enderecoAnteriorListener(ActionListener listenerForjButtonEnderecoAnterior) {
+        jButtonEnderecoAnterior.addActionListener(listenerForjButtonEnderecoAnterior);
     }
-    
-    public void enderecoAnterior(ActionListener listenerForjButtonEnderecoAnterior){
-        BtnAnterior.addActionListener(listenerForjButtonEnderecoAnterior);
+
+    public void visualizarClienteListener(ActionListener listenerForjButtonVisualizar) {
+        jButtonVisualizarTelaBusca.addActionListener(listenerForjButtonVisualizar);
     }
-    
+
+    public void limparBuscaClienteListener(ActionListener listenerForjButtonLimpar) {
+        jButtonLimparTelaBusca.addActionListener(listenerForjButtonLimpar);
+    }
+
+    public void excluirClienteListener(ActionListener listenerForjButtonExcluir) {
+        jButtonExcluirTelaBusca.addActionListener(listenerForjButtonExcluir);
+    }
+
+    public void voltarDaBuscaListener(ActionListener listenerForjButtonVoltar) {
+        jButtonVoltarTelaBusca.addActionListener(listenerForjButtonVoltar);
+    }
+
+    public void jTextFieldComplementoListener(FocusListener listenerForjFieldComplemento) {
+        TxtComplemento.addFocusListener(listenerForjFieldComplemento);
+    }
+
+    public void enabledSalvarTelaCadastro(boolean x) {
+        jButtonSalvarTelaCadastro.setEnabled(x);
+    }
+
+    public void enabledLimparCamposCliente(boolean x) {
+        jButtonLimparTelaCadastro.setEnabled(x);
+    }
+
+    public void enabledVoltar(boolean x) {
+        jButtonVoltarTelaCadastro.setEnabled(x);
+    }
+
+    public void enabledSalvarEndereco(boolean x) {
+        jButtonSalvarEndereco.setEnabled(x);
+    }
+
+    public void enabledNovoEndereco(boolean x) {
+        jButtonNovoEndereco.setEnabled(x);
+    }
+
+    public void enabledEditar(boolean x) {
+        jButtonEditarEndereco.setEnabled(x);
+    }
+
+    public void enabledExcluir(boolean x) {
+        jButtonExcluirEndereco.setEnabled(x);
+    }
+
+    public void enabledProximoEndereco(boolean x) {
+        jButtonProximoEndereco.setEnabled(x);
+    }
+
+    public void enabledEnderecoAnterior(boolean x) {
+        jButtonEnderecoAnterior.setEnabled(x);
+    }
+
+    public void enabledVisualizarCliente(boolean x) {
+        jButtonVisualizarTelaBusca.setEnabled(x);
+    }
+
+    public void enabledLimparBuscaCliente(boolean x) {
+        jButtonLimparTelaBusca.setEnabled(x);
+    }
+
+    public void enabledExcluirCliente(boolean x) {
+        jButtonExcluirTelaBusca.setEnabled(x);
+    }
+
+    public void enabledVoltarDaBusca(boolean x) {
+        jButtonVoltarTelaBusca.setEnabled(x);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnAnterior;
-    private javax.swing.JButton BtnEditarEndereco;
-    private javax.swing.JButton BtnExcluir;
-    private javax.swing.JButton BtnExcluirEndereco;
-    private javax.swing.JButton BtnLimpar;
-    private javax.swing.JButton BtnLimparBusca;
-    private javax.swing.JButton BtnMaisUmEndereco;
-    private javax.swing.JButton BtnNovoEndereco;
-    private javax.swing.JButton BtnProximo;
-    private javax.swing.JButton BtnSalvar;
-    private javax.swing.JButton BtnVisualizar;
-    private javax.swing.JButton BtnVoltarBusca;
-    private javax.swing.JButton BtnVoltarCadastro;
-    private javax.swing.JLabel LabelIdEndereco;
+    private javax.swing.JLabel LabelPaginaEndereco;
     private javax.swing.JPanel PanelBusca;
     private javax.swing.JPanel PanelCadastro;
     private javax.swing.JTabbedPane TabbledPanelCliente;
@@ -684,20 +736,28 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JTextField TxtBairro;
     private javax.swing.JTextField TxtComplemento;
     private javax.swing.JTextField TxtDescricao;
-    private javax.swing.JTextField TxtEntrega;
-    private javax.swing.JTextField TxtEntrega1;
-    private javax.swing.JTextField TxtEntrega2;
     private javax.swing.JTextField TxtId;
     private javax.swing.JTextField TxtNome;
     private javax.swing.JTextField TxtNumero;
-    private javax.swing.JTextField TxtRua;
-    private javax.swing.JTextField TxtTelefone;
+    private javax.swing.JButton jButtonEditarEndereco;
+    private javax.swing.JButton jButtonEnderecoAnterior;
+    private javax.swing.JButton jButtonExcluirEndereco;
+    private javax.swing.JButton jButtonExcluirTelaBusca;
+    private javax.swing.JButton jButtonLimparTelaBusca;
+    private javax.swing.JButton jButtonLimparTelaCadastro;
+    private javax.swing.JButton jButtonNovoEndereco;
+    private javax.swing.JButton jButtonProximoEndereco;
+    private javax.swing.JButton jButtonSalvarEndereco;
+    private javax.swing.JButton jButtonSalvarTelaCadastro;
+    private javax.swing.JButton jButtonVisualizarTelaBusca;
+    private javax.swing.JButton jButtonVoltarTelaBusca;
+    private javax.swing.JButton jButtonVoltarTelaCadastro;
     private javax.swing.JComboBox<String> jComboBoxTipoLogradouro;
+    private javax.swing.JFormattedTextField jFormattedTextFieldTelefone;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -709,11 +769,16 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelMapa;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextField jTextFieldCustoEntrega;
+    private javax.swing.JTextField jTextFieldDistanciaEntrega;
     private javax.swing.JTextField jTextFieldEmail;
+    private javax.swing.JTextField jTextFieldLogradouro;
+    private javax.swing.JTextField jTextFieldTempoEntrega;
     // End of variables declaration//GEN-END:variables
 }

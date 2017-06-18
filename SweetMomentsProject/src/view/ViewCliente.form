@@ -3,6 +3,7 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="title" type="java.lang.String" value="Doceira - Clientes"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -66,13 +67,13 @@
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="BtnVisualizar" min="-2" pref="132" max="-2" attributes="0"/>
+                              <Component id="jButtonVisualizarTelaBusca" min="-2" pref="132" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                              <Component id="BtnLimparBusca" min="-2" pref="132" max="-2" attributes="0"/>
+                              <Component id="jButtonLimparTelaBusca" min="-2" pref="132" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="BtnExcluir" min="-2" pref="132" max="-2" attributes="0"/>
+                              <Component id="jButtonExcluirTelaBusca" min="-2" pref="132" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                              <Component id="BtnVoltarBusca" min="-2" pref="132" max="-2" attributes="0"/>
+                              <Component id="jButtonVoltarTelaBusca" min="-2" pref="132" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane1" alignment="1" pref="911" max="32767" attributes="0"/>
                           <Component id="jTextField9" alignment="0" max="32767" attributes="0"/>
@@ -90,10 +91,10 @@
                       <Component id="jScrollPane1" min="-2" pref="286" max="-2" attributes="0"/>
                       <EmptySpace pref="179" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="BtnVisualizar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="BtnLimparBusca" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="BtnExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="BtnVoltarBusca" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonVisualizarTelaBusca" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonLimparTelaBusca" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonExcluirTelaBusca" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonVoltarTelaBusca" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
@@ -154,7 +155,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="BtnVisualizar">
+            <Component class="javax.swing.JButton" name="jButtonVisualizarTelaBusca">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="cc" red="ff" type="rgb"/>
@@ -163,7 +164,7 @@
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="BtnLimparBusca">
+            <Component class="javax.swing.JButton" name="jButtonLimparTelaBusca">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="66" red="66" type="rgb"/>
@@ -171,12 +172,12 @@
                 <Property name="text" type="java.lang.String" value="Limpar"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="BtnExcluir">
+            <Component class="javax.swing.JButton" name="jButtonExcluirTelaBusca">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Excluir"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="BtnVoltarBusca">
+            <Component class="javax.swing.JButton" name="jButtonVoltarTelaBusca">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Voltar ao Menu"/>
               </Properties>
@@ -202,25 +203,31 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="83" pref="83" max="-2" attributes="0"/>
                               <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                              <Component id="TxtId" min="-2" pref="149" max="-2" attributes="0"/>
-                              <EmptySpace min="75" pref="75" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Component id="TxtNome" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="51" pref="51" max="-2" attributes="0"/>
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                              <Component id="TxtTelefone" min="-2" pref="150" max="-2" attributes="0"/>
-                              <EmptySpace min="74" pref="74" max="-2" attributes="0"/>
-                              <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="TxtId" pref="149" max="32767" attributes="0"/>
+                          <Component id="jFormattedTextFieldTelefone" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="75" pref="75" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="TxtNome" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jTextFieldEmail" min="-2" pref="548" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -249,13 +256,11 @@
                                                           <Component id="TxtNumero" min="-2" pref="95" max="-2" attributes="0"/>
                                                       </Group>
                                                       <EmptySpace min="29" pref="36" max="32767" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Component id="TxtRua" alignment="1" min="-2" pref="209" max="-2" attributes="0"/>
-                                                          <Group type="102" alignment="1" attributes="0">
-                                                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                                                              <Component id="TxtBairro" min="-2" pref="209" max="-2" attributes="0"/>
-                                                          </Group>
+                                                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                          <Component id="jTextFieldLogradouro" pref="209" max="32767" attributes="0"/>
+                                                          <Component id="TxtBairro" max="32767" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                                   <Component id="TxtComplemento" alignment="0" max="32767" attributes="0"/>
@@ -265,15 +270,15 @@
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="TxtEntrega" min="-2" pref="95" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldTempoEntrega" min="-2" pref="95" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                               <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="TxtEntrega2" min="-2" pref="95" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldDistanciaEntrega" min="-2" pref="95" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                               <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="TxtEntrega1" min="-2" pref="95" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldCustoEntrega" min="-2" pref="95" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
                                               <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
@@ -282,27 +287,27 @@
                                           </Group>
                                       </Group>
                                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                                      <Component id="jLabel13" min="-2" pref="409" max="-2" attributes="0"/>
+                                      <Component id="jLabelMapa" min="-2" pref="409" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
-                              <Component id="BtnNovoEndereco" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonSalvarEndereco" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="BtnMaisUmEndereco" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonNovoEndereco" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                              <Component id="BtnEditarEndereco" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonEditarEndereco" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                              <Component id="BtnExcluirEndereco" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonExcluirEndereco" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="BtnAnterior" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonEnderecoAnterior" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="LabelIdEndereco" min="-2" max="-2" attributes="0"/>
+                              <Component id="LabelPaginaEndereco" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="BtnProximo" min="-2" max="-2" attributes="0"/>
+                              <Component id="jButtonProximoEndereco" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
@@ -310,11 +315,11 @@
                   <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="133" max="-2" attributes="0"/>
-                      <Component id="BtnSalvar" min="-2" pref="131" max="-2" attributes="0"/>
+                      <Component id="jButtonSalvarTelaCadastro" min="-2" pref="131" max="-2" attributes="0"/>
                       <EmptySpace min="149" pref="149" max="-2" attributes="0"/>
-                      <Component id="BtnLimpar" min="-2" pref="131" max="-2" attributes="0"/>
+                      <Component id="jButtonLimparTelaCadastro" min="-2" pref="131" max="-2" attributes="0"/>
                       <EmptySpace min="129" pref="129" max="-2" attributes="0"/>
-                      <Component id="BtnVoltarCadastro" min="-2" pref="131" max="-2" attributes="0"/>
+                      <Component id="jButtonVoltarTelaCadastro" min="-2" pref="131" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -336,13 +341,15 @@
                       </Group>
                       <EmptySpace min="27" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="TxtTelefone" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextFieldEmail" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jTextFieldEmail" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jFormattedTextFieldTelefone" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -363,7 +370,7 @@
                                       <Component id="jComboBoxTipoLogradouro" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="TxtRua" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldLogradouro" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -389,38 +396,38 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="TxtEntrega" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldTempoEntrega" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TxtEntrega1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldCustoEntrega" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="TxtEntrega2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTextFieldDistanciaEntrega" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                              <Component id="jLabel13" min="-2" pref="239" max="-2" attributes="0"/>
+                              <Component id="jLabelMapa" min="-2" pref="239" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="30" max="32767" attributes="0"/>
+                      <EmptySpace pref="27" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="BtnAnterior" pref="26" max="32767" attributes="0"/>
+                                  <Component id="jButtonEnderecoAnterior" pref="26" max="32767" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                      <Component id="LabelIdEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LabelPaginaEndereco" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="BtnProximo" max="32767" attributes="0"/>
-                                  <Component id="BtnEditarEndereco" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="BtnExcluirEndereco" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jButtonProximoEndereco" max="32767" attributes="0"/>
+                                  <Component id="jButtonEditarEndereco" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="jButtonExcluirEndereco" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="BtnMaisUmEndereco" max="32767" attributes="0"/>
-                                  <Component id="BtnNovoEndereco" alignment="0" min="-2" pref="26" max="-2" attributes="0"/>
+                                  <Component id="jButtonNovoEndereco" max="32767" attributes="0"/>
+                                  <Component id="jButtonSalvarEndereco" alignment="0" min="-2" pref="26" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
@@ -428,9 +435,9 @@
                       <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="BtnSalvar" min="-2" max="-2" attributes="0"/>
-                          <Component id="BtnLimpar" min="-2" max="-2" attributes="0"/>
-                          <Component id="BtnVoltarCadastro" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonSalvarTelaCadastro" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonLimparTelaCadastro" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButtonVoltarTelaCadastro" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
@@ -449,9 +456,10 @@
                 <Property name="name" type="java.lang.String" value="" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="BtnSalvar">
+            <Component class="javax.swing.JButton" name="jButtonSalvarTelaCadastro">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Salvar"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator1">
@@ -470,12 +478,12 @@
                 <Property name="text" type="java.lang.String" value="Descri&#xe7;&#xe3;o"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="BtnLimpar">
+            <Component class="javax.swing.JButton" name="jButtonLimparTelaCadastro">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Limpar"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="BtnVoltarCadastro">
+            <Component class="javax.swing.JButton" name="jButtonVoltarTelaCadastro">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Voltar"/>
               </Properties>
@@ -507,7 +515,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="TxtDescricao">
             </Component>
-            <Component class="javax.swing.JTextField" name="TxtRua">
+            <Component class="javax.swing.JTextField" name="jTextFieldLogradouro">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
@@ -515,9 +523,6 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="TxtBairro">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtBairroActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="TxtNome">
             </Component>
@@ -530,18 +535,16 @@
             </Component>
             <Component class="javax.swing.JTextField" name="TxtNumero">
             </Component>
-            <Component class="javax.swing.JTextField" name="TxtTelefone">
+            <Component class="javax.swing.JTextField" name="jTextFieldTempoEntrega">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="TxtEntrega">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtEntregaActionPerformed"/>
-              </Events>
+            <Component class="javax.swing.JButton" name="jButtonProximoEndereco">
             </Component>
-            <Component class="javax.swing.JButton" name="BtnProximo">
+            <Component class="javax.swing.JButton" name="jButtonSalvarEndereco">
             </Component>
-            <Component class="javax.swing.JButton" name="BtnNovoEndereco">
-            </Component>
-            <Component class="javax.swing.JButton" name="BtnAnterior">
+            <Component class="javax.swing.JButton" name="jButtonEnderecoAnterior">
             </Component>
             <Component class="javax.swing.JTextField" name="TxtId">
               <Properties>
@@ -553,7 +556,7 @@
                 <Property name="text" type="java.lang.String" value="ID"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="LabelIdEndereco">
+            <Component class="javax.swing.JLabel" name="LabelPaginaEndereco">
               <Properties>
                 <Property name="text" type="java.lang.String" value="1"/>
               </Properties>
@@ -565,32 +568,71 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldEmail">
             </Component>
-            <Component class="javax.swing.JButton" name="BtnMaisUmEndereco">
+            <Component class="javax.swing.JButton" name="jButtonNovoEndereco">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="BtnEditarEndereco">
+            <Component class="javax.swing.JButton" name="jButtonEditarEndereco">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="BtnExcluirEndereco">
+            <Component class="javax.swing.JButton" name="jButtonExcluirEndereco">
               <Properties>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel13">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel13"/>
-              </Properties>
+            <Component class="javax.swing.JLabel" name="jLabelMapa">
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBoxTipoLogradouro">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
-                    <StringItem index="0" value="Avenida"/>
-                    <StringItem index="1" value="Rua"/>
+                  <StringArray count="44">
+                    <StringItem index="0" value="Aeroporto"/>
+                    <StringItem index="1" value="Alameda"/>
+                    <StringItem index="2" value="&#xc1;rea"/>
+                    <StringItem index="3" value="Avenida"/>
+                    <StringItem index="4" value="Campo"/>
+                    <StringItem index="5" value="Ch&#xe1;cara"/>
+                    <StringItem index="6" value="Col&#xf4;nia"/>
+                    <StringItem index="7" value="Condom&#xed;nio"/>
+                    <StringItem index="8" value="Conjunto"/>
+                    <StringItem index="9" value="Distrito"/>
+                    <StringItem index="10" value="Esplanada"/>
+                    <StringItem index="11" value="Esta&#xe7;&#xe3;o"/>
+                    <StringItem index="12" value="Estrada"/>
+                    <StringItem index="13" value="Favela"/>
+                    <StringItem index="14" value="Fazenda"/>
+                    <StringItem index="15" value="Feira"/>
+                    <StringItem index="16" value="Jardim"/>
+                    <StringItem index="17" value="Ladeira"/>
+                    <StringItem index="18" value="Lago"/>
+                    <StringItem index="19" value="Lagoa"/>
+                    <StringItem index="20" value="Largo"/>
+                    <StringItem index="21" value="Loteamento"/>
+                    <StringItem index="22" value="Morro"/>
+                    <StringItem index="23" value="N&#xfa;cleo"/>
+                    <StringItem index="24" value="Parque"/>
+                    <StringItem index="25" value="Passarela"/>
+                    <StringItem index="26" value="P&#xe1;tio"/>
+                    <StringItem index="27" value="Pra&#xe7;a"/>
+                    <StringItem index="28" value="Quadra"/>
+                    <StringItem index="29" value="Recanto"/>
+                    <StringItem index="30" value="Residencial"/>
+                    <StringItem index="31" value="Rodovia"/>
+                    <StringItem index="32" value="Rua"/>
+                    <StringItem index="33" value="Setor"/>
+                    <StringItem index="34" value="S&#xed;tio"/>
+                    <StringItem index="35" value="Travessa"/>
+                    <StringItem index="36" value="Trecho"/>
+                    <StringItem index="37" value="Trevo"/>
+                    <StringItem index="38" value="Vale"/>
+                    <StringItem index="39" value="Vereda"/>
+                    <StringItem index="40" value="Via"/>
+                    <StringItem index="41" value="Viaduto"/>
+                    <StringItem index="42" value="Viela"/>
+                    <StringItem index="43" value="Vila"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -603,26 +645,33 @@
                 <Property name="text" type="java.lang.String" value="Custo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="TxtEntrega1">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtEntrega1ActionPerformed"/>
-              </Events>
+            <Component class="javax.swing.JTextField" name="jTextFieldCustoEntrega">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel15">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Km"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="TxtEntrega2">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtEntrega2ActionPerformed"/>
-              </Events>
+            <Component class="javax.swing.JTextField" name="jTextFieldDistanciaEntrega">
+              <Properties>
+                <Property name="enabled" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator4">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel16">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Informa&#xe7;&#xf5;es da entrega"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="jFormattedTextFieldTelefone">
+              <Properties>
+                <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+                  <Format format="(##)#########" subtype="-1" type="0"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
