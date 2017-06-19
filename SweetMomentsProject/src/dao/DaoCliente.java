@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import model.ModelCliente;
 
 /**
@@ -25,23 +26,54 @@ public class DaoCliente {
     }
 
     public int getCodigoAtual() throws SQLException {
+        Connection con = new Conexao().getConnection();
+
         int codigo = 0;
         String sql = "select max(id) from cliente";
         try {
-            // prepared statement para inserção
-            PreparedStatement stmt = conexao.prepareStatement(sql);
+            PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 codigo = rs.getInt("max(id)");
             }
             rs.close();
             stmt.close();
-            conexao.close();
+            con.close();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return codigo + 1;
+    }
+    
+    public ArrayList<ModelCliente> getClientes() throws SQLException {
+        Connection con = new Conexao().getConnection();
+        
+        ArrayList<ModelCliente> clientes = new ArrayList<ModelCliente>();
+        clientes = null; 
+        int codigo;
+        String nome, telefone, email;
+        
+        String sql = "select * from cliente";
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                codigo = rs.getInt("id");
+                nome = rs.getString("nome");
+                telefone = rs.getString("telefone");
+                email = rs.getString("email");
+                ModelCliente endereco = new ModelCliente(codigo,nome,telefone,email);
+                clientes.add(endereco);
+            }
+            rs.close();
+            stmt.close();
+            con.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return clientes;
     }
 
     public void adiciona(ModelCliente cliente) throws SQLException, ParseException {

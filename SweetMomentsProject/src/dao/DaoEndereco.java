@@ -50,24 +50,24 @@ public class DaoEndereco {
             throw new RuntimeException(e);
         }
         conexao.close();
-        if (codigo == 0) {
-            return 1;
-        }
+        //     if (codigo == 0) {
+        //         return 1;
+        //     }
         return codigo;
     }
 
     public void adiciona(ArrayList<ModelEndereco> enderecos) throws SQLException, ParseException {
         for (int i = 0; i < enderecos.size(); i++) {
-            Connection conexao = new Conexao().getConnection();
+            Connection con = new Conexao().getConnection();
             String sql = "insert into endereco "
                     + "(id,idCliente,numero,tempoMedioEntrega,descricao,logradouro,bairro,complemento,tipoDeLogradouro,custoEntrega,distanciaEntrega)"
                     + " values (?,?,?,?,?,?,?,?,?,?,?)";
             try {
-                try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+                try (PreparedStatement stmt = con.prepareStatement(sql)) {
                     stmt.setInt(1, enderecos.get(i).getId());
                     stmt.setInt(2, enderecos.get(i).getIdCliente());
                     stmt.setInt(3, enderecos.get(i).getNumero());
-                    stmt.setInt(4, enderecos.get(i).getTempoMedioParaEntrega());
+                    stmt.setDouble(4, enderecos.get(i).getTempoMedioParaEntrega());
                     stmt.setString(5, enderecos.get(i).getDescricao());
                     stmt.setString(6, enderecos.get(i).getLogradouro());
                     stmt.setString(7, enderecos.get(i).getBairro());
@@ -75,9 +75,9 @@ public class DaoEndereco {
                     stmt.setString(9, enderecos.get(i).getTipoLogradouro());
                     stmt.setDouble(10, enderecos.get(i).getCustoEntrega());
                     stmt.setDouble(11, enderecos.get(i).getDistanciaEntrega());
-                    stmt.execute();  
+                    stmt.execute();
                 }
-                conexao.close();
+                con.close();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }

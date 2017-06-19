@@ -18,15 +18,14 @@ import java.util.logging.Logger;
  */
 public class ModelEndereco {
     private final dao.DaoEndereco theDao = new dao.DaoEndereco();
-    int id, idCliente, numero, tempoMedioParaEntrega;
+    int id, idCliente, numero;
     String descricao, logradouro, bairro, complemento, tipoLogradouro;
-    Double custoEntrega, distanciaEntrega;
-    ArrayList<ModelEndereco> enderecos = new ArrayList<ModelEndereco>();
+    Double custoEntrega, distanciaEntrega,tempoMedioParaEntrega;
 
     public ModelEndereco() {
     }
     
-    public ModelEndereco(int id, int idCliente, int numero, int tempoMedioParaEntrega, String descricao, String logradouro, String bairro, String complemento, String tipoLogradouro, Double custoEntrega, Double distanciaEntrega) {
+    public ModelEndereco(int id, int idCliente, int numero, Double tempoMedioParaEntrega, String descricao, String logradouro, String bairro, String complemento, String tipoLogradouro, Double custoEntrega, Double distanciaEntrega) {
         this.id = id;
         this.idCliente = idCliente;
         this.numero = numero;
@@ -64,11 +63,11 @@ public class ModelEndereco {
         this.numero = numero;
     }
 
-    public int getTempoMedioParaEntrega() {
+    public Double getTempoMedioParaEntrega() {
         return tempoMedioParaEntrega;
     }
 
-    public void setTempoMedioParaEntrega(int tempoMedioParaEntrega) {
+    public void setTempoMedioParaEntrega(Double tempoMedioParaEntrega) {
         this.tempoMedioParaEntrega = tempoMedioParaEntrega;
     }
 
@@ -94,14 +93,6 @@ public class ModelEndereco {
 
     public void setComplemento(String complemento) {
         this.complemento = complemento;
-    }
-
-    public ArrayList<ModelEndereco> getEnderecos() {
-        return enderecos;
-    }
-
-    public void setEnderecos(ArrayList<ModelEndereco> enderecos) {
-        this.enderecos = enderecos;
     }
 
     public String getLogradouro() {

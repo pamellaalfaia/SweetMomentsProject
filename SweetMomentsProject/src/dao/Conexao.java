@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class Conexao {
     public Connection getConnection() {
         try {
-            return DriverManager.getConnection("jdbc:mysql://localhost/doceira", "root", "1995");
+            return DriverManager.getConnection("jdbc:mysql://localhost:3306/doceira?autoReconnect=true&useSSL=false", "root", "1995");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

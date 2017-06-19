@@ -202,7 +202,7 @@ public class ViewCliente extends javax.swing.JFrame {
 
         jLabel7.setText("Número");
 
-        jLabel8.setText("Tempo");
+        jLabel8.setText("Minutos");
 
         jLabel9.setText("Complemento");
 
@@ -211,6 +211,10 @@ public class ViewCliente extends javax.swing.JFrame {
         jLabel2.setText("Telefone");
 
         jTextFieldTempoEntrega.setEnabled(false);
+
+        jButtonProximoEndereco.setEnabled(false);
+
+        jButtonEnderecoAnterior.setEnabled(false);
 
         TxtId.setEnabled(false);
 
@@ -293,7 +297,7 @@ public class ViewCliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonDirecoes))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCadastroLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(20, Short.MAX_VALUE)
                         .addGroup(PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelCadastroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel3)
@@ -320,16 +324,17 @@ public class ViewCliente extends javax.swing.JFrame {
                                                 .addComponent(TxtComplemento)
                                                 .addComponent(TxtDescricao)))
                                         .addGroup(PanelCadastroLayout.createSequentialGroup()
+                                            .addGap(8, 8, 8)
                                             .addComponent(jLabel8)
-                                            .addGap(18, 18, 18)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                             .addComponent(jTextFieldTempoEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(25, 25, 25)
+                                            .addGap(33, 33, 33)
                                             .addComponent(jLabel15)
-                                            .addGap(18, 18, 18)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                             .addComponent(jTextFieldDistanciaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(25, 25, 25)
+                                            .addGap(33, 33, 33)
                                             .addComponent(jLabel14)
-                                            .addGap(18, 18, 18)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                             .addComponent(jTextFieldCustoEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(PanelCadastroLayout.createSequentialGroup()
                                             .addComponent(jLabel16)
@@ -606,8 +611,8 @@ public class ViewCliente extends javax.swing.JFrame {
         return jTextFieldCustoEntrega.getText();
     }
 
-    public void setCustoEntrega(Double custoEntrega) {
-        jTextFieldCustoEntrega.setText(custoEntrega.toString());
+    public void setCustoEntrega(String custoEntrega) {
+        jTextFieldCustoEntrega.setText(custoEntrega);
     }
 
     public String getPaginaEndereco() {
@@ -744,6 +749,30 @@ public class ViewCliente extends javax.swing.JFrame {
     
     public void enabledRota(boolean x) {
         jButtonDirecoes.setEnabled(x);
+    }
+    
+    public void enabledDescricao(boolean x) {
+        TxtDescricao.setEnabled(x);
+    }
+    
+    public void enabledTipoLogradouro(boolean x) {
+        jComboBoxTipoLogradouro.setEnabled(x);
+    }
+    
+    public void enabledLogradouro(boolean x) {
+        jTextFieldLogradouro.setEnabled(x);
+    }
+    
+    public void enabledNumero(boolean x) {
+        TxtNumero.setEnabled(x);
+    }
+    
+    public void enabledBairro(boolean x) {
+        TxtBairro.setEnabled(x);
+    }
+    
+    public void enabledComplemento(boolean x) {
+        TxtComplemento.setEnabled(x);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
