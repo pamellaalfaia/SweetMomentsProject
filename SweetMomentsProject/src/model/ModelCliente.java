@@ -8,6 +8,7 @@ package model;
 import controller.ControllerCliente;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -73,5 +74,9 @@ public class ModelCliente {
     public int proximoCodigo() throws SQLException {
         int novoId = theDao.getCodigoAtual();
         return novoId;
+    }
+    
+    public ArrayList<ModelCliente> getClientes() throws SQLException {
+        return theDao.getClientes();
     }
 }

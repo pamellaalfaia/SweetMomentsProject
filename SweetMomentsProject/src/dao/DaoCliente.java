@@ -50,11 +50,11 @@ public class DaoCliente {
         Connection con = new Conexao().getConnection();
         
         ArrayList<ModelCliente> clientes = new ArrayList<ModelCliente>();
-        clientes = null; 
+         
         int codigo;
         String nome, telefone, email;
         
-        String sql = "select * from cliente";
+        String sql = "select id,nome,telefone,email from cliente";
         try {
             PreparedStatement stmt = con.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
@@ -63,8 +63,8 @@ public class DaoCliente {
                 nome = rs.getString("nome");
                 telefone = rs.getString("telefone");
                 email = rs.getString("email");
-                ModelCliente endereco = new ModelCliente(codigo,nome,telefone,email);
-                clientes.add(endereco);
+                ModelCliente cliente = new ModelCliente(codigo,nome,telefone,email);
+                clientes.add(cliente);
             }
             rs.close();
             stmt.close();

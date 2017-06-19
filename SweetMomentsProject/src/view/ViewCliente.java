@@ -11,6 +11,7 @@ import java.awt.event.FocusListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -53,7 +54,7 @@ public class ViewCliente extends javax.swing.JFrame {
 
         TabbledPanelCliente = new javax.swing.JTabbedPane();
         PanelBusca = new javax.swing.JPanel();
-        jTextField9 = new javax.swing.JTextField();
+        jTextFieldPesquisa = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableCliente = new javax.swing.JTable();
         jButtonVisualizarTelaBusca = new javax.swing.JButton();
@@ -112,7 +113,7 @@ public class ViewCliente extends javax.swing.JFrame {
 
         PanelBusca.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTextField9.setText("Digite sua pesquisa aqui...");
+        jTextFieldPesquisa.setText("Digite sua pesquisa aqui...");
 
         TableCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -122,10 +123,24 @@ public class ViewCliente extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Código", "Nome", "Telefone", "Endereço"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TableCliente.setFocusable(false);
         jScrollPane1.setViewportView(TableCliente);
+        if (TableCliente.getColumnModel().getColumnCount() > 0) {
+            TableCliente.getColumnModel().getColumn(0).setResizable(false);
+            TableCliente.getColumnModel().getColumn(0).setPreferredWidth(85);
+            TableCliente.getColumnModel().getColumn(2).setPreferredWidth(110);
+        }
 
         jButtonVisualizarTelaBusca.setBackground(new java.awt.Color(255, 204, 255));
         jButtonVisualizarTelaBusca.setText("Visualizar");
@@ -154,14 +169,14 @@ public class ViewCliente extends javax.swing.JFrame {
                         .addGap(72, 72, 72)
                         .addComponent(jButtonVoltarTelaBusca, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 911, Short.MAX_VALUE)
-                    .addComponent(jTextField9))
+                    .addComponent(jTextFieldPesquisa))
                 .addGap(22, 22, 22))
         );
         PanelBuscaLayout.setVerticalGroup(
             PanelBuscaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelBuscaLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
@@ -774,6 +789,10 @@ public class ViewCliente extends javax.swing.JFrame {
     public void enabledComplemento(boolean x) {
         TxtComplemento.setEnabled(x);
     }
+    
+    public void setTableModel (TableModel tableModel){
+        TableCliente.setModel(tableModel);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelPaginaEndereco;
@@ -823,11 +842,11 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField jTextFieldCustoEntrega;
     private javax.swing.JTextField jTextFieldDistanciaEntrega;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldLogradouro;
+    private javax.swing.JTextField jTextFieldPesquisa;
     private javax.swing.JTextField jTextFieldTempoEntrega;
     // End of variables declaration//GEN-END:variables
 }
