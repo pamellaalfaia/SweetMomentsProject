@@ -33,10 +33,7 @@ public class DaoEndereco {
         codigoCliente = cliente.getId();
         String sql = "select max(e.id) from endereco e, cliente c where c.id = e.idCliente and c.id = ?";
         try {
-            // prepared statement para inserção
             PreparedStatement stmt = conexao.prepareStatement(sql);
-
-            // seta os valores
             stmt.setInt(1, codigoCliente);
 
             ResultSet rs = stmt.executeQuery();
@@ -50,10 +47,50 @@ public class DaoEndereco {
             throw new RuntimeException(e);
         }
         conexao.close();
+        return codigo;
+    }
+    
+    public ArrayList<ModelEndereco> getEnderecos(ModelCliente cliente) throws SQLException {
+        Connection conexao = new Conexao().getConnection();
+        
+        ArrayList<ModelEndereco> enderecos = new ArrayList<ModelEndereco>();
+        int id, numero;
+        String descricao, logradouro, bairro, complemento, tipoLogradouro;
+        Double custoEntrega, distanciaEntrega,tempoMedioParaEntrega;
+        
+        int codigoCliente = cliente.getId();
+        
+        String sql = "select * from endereco e, cliente c where c.id = e.idCliente and c.id = ?";
+        try {
+            PreparedStatement stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, codigoCliente);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                id = rs.getInt("id");
+                numero = rs.getInt("numero");
+                descricao = rs.getString("descricao");
+                logradouro = rs.getString("logradouro");
+                bairro = rs.getString("bairro");
+                complemento = rs.getString("complemento");
+                tipoLogradouro = rs.getString("tipoDeLogradouro");
+                custoEntrega = rs.getDouble("custoEntrega");
+                distanciaEntrega = rs.getDouble("distanciaEntrega");
+                tempoMedioParaEntrega = rs.getDouble("tempoMedioEntrega");
+                ModelEndereco endereco = new ModelEndereco(id, codigoCliente, numero, tempoMedioParaEntrega, descricao, logradouro, bairro, complemento, tipoLogradouro, custoEntrega, distanciaEntrega);
+                enderecos.add(endereco);
+            }
+            rs.close();
+            stmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        conexao.close();
         //     if (codigo == 0) {
         //         return 1;
         //     }
-        return codigo;
+        return enderecos;
     }
 
     public void adiciona(ArrayList<ModelEndereco> enderecos) throws SQLException, ParseException {

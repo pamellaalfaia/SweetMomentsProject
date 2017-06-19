@@ -144,4 +144,8 @@ public class ModelEndereco {
         }
         return NovoId;
     }
+    
+    public ArrayList<ModelEndereco> getEnderecos(ModelCliente cliente) throws SQLException {
+        return theDao.getEnderecos(cliente);
+    }
 }

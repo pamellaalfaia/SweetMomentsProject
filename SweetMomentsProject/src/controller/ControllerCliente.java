@@ -11,12 +11,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.net.MalformedURLException;
 import java.sql.SQLException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,6 +64,11 @@ public class ControllerCliente {
         this.theView.enderecoAnteriorListener(new EnderecoAnteriorListener());
         this.theView.proximoEnderecoListener(new ProximoEnderecoListener());
         this.theViewRota.voltarDaRotaListener(new VoltarDaTelaDeRotaListener());
+        this.theView.jTextFieldPesquisaKeyListener(new PesquisarKeyListener());
+        this.theView.jTextFieldPesquisaFocusListener(new PesquisarFocusListener());
+        this.theView.tabelaClientesMouseListener(new TabelaClienteCliqueListener());
+        this.theView.visualizarClienteListener(new VisualizarCadastroCliente());
+        this.theView.excluirListener(new ExcluirEnderecoListener());
     }
 
     public void setFrameVisible() throws SQLException {
@@ -74,9 +82,79 @@ public class ControllerCliente {
         public void actionPerformed(ActionEvent e) {
             theViewRota.setVisible(false);
         }
-        
+
+    }
+
+    class TabelaClienteCliqueListener implements MouseListener {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            theView.enabledVisualizarCliente(true);
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+        }
     }
     
+    class VisualizarCadastroCliente implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int id = Integer.parseInt(theView.getIDSelecaoTabelaClientes());
+            
+            ModelCliente cliente = null;
+            try {
+                cliente = modelCliente.getCliente(id);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            theView.setIdCliente(id);
+            theView.setNome(cliente.getNome());
+            theView.setTelefone(cliente.getTelefone());
+            theView.setEmail(cliente.getEmail());
+            
+            try {
+                enderecos = modelEndereco.getEnderecos(cliente);
+            } catch (SQLException ex) {
+                Logger.getLogger(ControllerCliente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            theView.painelTelaClientes(1);
+            
+            recuperaDadosDeEndereco(1);
+            
+            if (enderecos.size()>1){
+                theView.enabledProximoEndereco(true);
+            }
+            paginaMax = enderecos.size();
+            
+            enabledCamposCliente(false);
+            enabledCamposEndereco(false);
+            theView.enabledSalvarEndereco(false);
+            theView.enabledLimparCamposCliente(false);
+            theView.enabledEditar(true);
+            theView.enabledNovoEndereco(true);
+            theView.enabledExcluir(true);
+            theView.enabledRota(true);
+            theView.visibleEditarCliente(true);
+            theView.visibleExcluirClienteTelaCliente(true);
+        }
+        
+    }
+
     class NovoEnderecoListener implements ActionListener {
 
         @Override
@@ -86,9 +164,9 @@ public class ControllerCliente {
             enabledCamposEndereco(true);
 
             //pagina atual
-            int paginaAtual = Integer.parseInt(theView.getPaginaEndereco());
+            //int paginaAtual = Integer.parseInt(theView.getPaginaEndereco());
             //próxima página
-            theView.setPaginaEndereco(paginaAtual + 1);
+            theView.setPaginaEndereco(paginaMax + 1);
 
             //habilita botões
             theView.enabledEnderecoAnterior(true);
@@ -96,16 +174,42 @@ public class ControllerCliente {
 
             //desabilita botões
             theView.enabledEditar(false);
-            theView.enabledExcluir(false);
+            theView.enabledExcluir(true);
             theView.enabledNovoEndereco(false);
             theView.enabledProximoEndereco(false);
+            
+            theView.enabledProximoEndereco(false);
+            theView.enabledEnderecoAnterior(false);
 
-            //atualiza variável global paginaMax
+     /*       //atualiza variável global paginaMax
             if (paginaMax < paginaAtual) {
                 paginaMax = paginaAtual;
+            }*/
+
+        }
+    }
+    
+    class ExcluirEnderecoListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int paginaAtual = Integer.parseInt(theView.getPaginaEndereco());
+            theView.enabledSalvarEndereco(false);
+            theView.enabledNovoEndereco(true);
+            theView.enabledEditar(true);
+            int paginaAtualizada = paginaAtual-1;
+            theView.setPaginaEndereco(paginaAtualizada);
+            recuperaDadosDeEndereco(paginaAtualizada);
+            paginaMax--;
+            
+            if (paginaAtualizada>1){
+                theView.enabledEnderecoAnterior(true);
+            } else if (paginaAtualizada<paginaMax){
+                theView.enabledProximoEndereco(true);
             }
             
         }
+        
     }
 
     class EnderecoAnteriorListener implements ActionListener {
@@ -154,6 +258,9 @@ public class ControllerCliente {
             if (pagina == paginaMax) {
                 theView.enabledProximoEndereco(false);
             }
+            
+            
+            
         }
     }
 
@@ -210,7 +317,7 @@ public class ControllerCliente {
 
             //desabilita botão salvarEndereco
             theView.enabledSalvarEndereco(false);
-            
+
             //desabilita campos de endereço
             enabledCamposEndereco(false);
 
@@ -238,7 +345,7 @@ public class ControllerCliente {
             String logradouro = theView.getLogradouro();
             String numero = theView.getNumero();
             String bairro = theView.getBairro();
-            
+
             String[][] arrayRoute = montaRota(tipoLogradouro, logradouro, numero, bairro);
 
             String[] columnas = new String[3];
@@ -258,13 +365,51 @@ public class ControllerCliente {
         }
     }
 
+    class PesquisarFocusListener implements FocusListener {
+
+        @Override
+        public void focusGained(FocusEvent e) {
+            if (theView.getPesquisa().equals("Digite sua pesquisa aqui...")) {
+                theView.setPaginaPesquisa("");
+            }
+        }
+
+        @Override
+        public void focusLost(FocusEvent e) {
+
+        }
+
+    }
+
+    class PesquisarKeyListener implements KeyListener {
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            if (e.getKeyCode() == 10) {
+                String busca = theView.getPesquisa();
+                atualizaTabelaDeClientes(busca);
+            }
+        }
+
+    }
+
     class ComplementoListener implements FocusListener {
 
         @Override
         public void focusGained(FocusEvent e) {
 
             //captura informações necessárias para o mapa
-            String tipoLogradouro = theView.getTipoLogradouro(); 
+            String tipoLogradouro = theView.getTipoLogradouro();
             String logradouro = theView.getLogradouro();
             String numero = theView.getNumero();
             String bairro = theView.getBairro();
@@ -282,11 +427,11 @@ public class ControllerCliente {
             //distanciaTotal
             String distancia = arredondamento(calculaDistanciaTotal());
             Double distanciaDouble = calculaDistanciaTotal();
-            
+
             //setando valores calculados
             theView.setTempoEntrega(tempo);
             theView.setDistanciaEntrega(distancia);
-            
+
             //  custo = (distancia)/(quantidade de quilometros que consegue rodar com 1L)*(preço da gasolina)
             Double custo = (distanciaDouble / 16) * 4;
             theView.setCustoEntrega(arredondamento(custo));
@@ -315,15 +460,20 @@ public class ControllerCliente {
         theView.setCustoEntrega("");
         theView.setLabelMapa("");
     }
-    
+
     private void enabledCamposEndereco(boolean x) {
-        //limpar campos de endereco
         theView.enabledDescricao(x);
         theView.enabledTipoLogradouro(x);
         theView.enabledLogradouro(x);
         theView.enabledNumero(x);
         theView.enabledBairro(x);
         theView.enabledComplemento(x);
+    }
+    
+    private void enabledCamposCliente(boolean x) {
+        theView.enabledNome(x);
+        theView.enabledTelefone(x);
+        theView.enabledEmail(x);
     }
 
     private void recuperaDadosDeEndereco(int pagina) {
@@ -337,17 +487,17 @@ public class ControllerCliente {
         theView.setTempoEntrega(String.valueOf(enderecos.get(pagina - 1).getTempoMedioParaEntrega()));
         theView.setDistanciaEntrega(String.valueOf(enderecos.get(pagina - 1).getDistanciaEntrega()));
         theView.setCustoEntrega(String.valueOf(enderecos.get(pagina - 1).getCustoEntrega()));
-        montaMapa(enderecos.get(pagina - 1).getTipoLogradouro(), 
-                enderecos.get(pagina - 1).getLogradouro(), 
-                String.valueOf(enderecos.get(pagina - 1).getNumero()), 
+        montaMapa(enderecos.get(pagina - 1).getTipoLogradouro(),
+                enderecos.get(pagina - 1).getLogradouro(),
+                String.valueOf(enderecos.get(pagina - 1).getNumero()),
                 enderecos.get(pagina - 1).getBairro());
     }
 
     private void montaMapa(String tipoLogradouro, String logradouro, String numero, String bairro) {
         String busca = tipoLogradouro + " "
-                    + logradouro + ", "
-                    + numero + " - "
-                    + bairro;
+                + logradouro + ", "
+                + numero + " - "
+                + bairro;
 
         //setar mapa
         if (!theView.getLabelMapa().isEmpty()) {
@@ -356,8 +506,10 @@ public class ControllerCliente {
         Image imagenMapa = null;
         try {
             imagenMapa = ObjStaticMaps.getStaticMap(busca, 14, new Dimension(500, 500), 1, StaticMaps.Format.png, StaticMaps.Maptype.roadmap);
+
         } catch (MalformedURLException | UnsupportedEncodingException ex) {
-            Logger.getLogger(ControllerCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControllerCliente.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         if (imagenMapa != null) {
             ImageIcon imgIcon = new ImageIcon(imagenMapa);
@@ -368,17 +520,21 @@ public class ControllerCliente {
 
     private String[][] montaRota(String tipoLogradouro, String logradouro, String numero, String bairro) {
         String busca = tipoLogradouro + " "
-                    + logradouro + ", "
-                    + numero + " - "
-                    + bairro;
+                + logradouro + ", "
+                + numero + " - "
+                + bairro;
         String[][] arrayRoute = null;
         //montar rota
         try {
             arrayRoute = ObjRoute.getRoute("Rua Luiz Paulistano, 51", busca, null, Boolean.TRUE, Route.mode.driving, Route.avoids.nothing);
+
         } catch (MalformedURLException ex) {
-            Logger.getLogger(ControllerCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControllerCliente.class
+                    .getName()).log(Level.SEVERE, null, ex);
+
         } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(ControllerCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControllerCliente.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         return arrayRoute;
     }
@@ -403,5 +559,36 @@ public class ControllerCliente {
         Double tempo = (double) tempoAux;
         tempo = (tempo / 60);
         return tempo;
+    }
+
+    private void atualizaTabelaDeClientes(String busca) {
+        String[] colunas = new String[4];
+        colunas[0] = "Código";
+        colunas[1] = "Nome";
+        colunas[2] = "Telefone";
+        colunas[3] = "E-Mail";
+
+        ArrayList<ModelCliente> clientesListModelCliente = null;
+
+        try {
+            clientesListModelCliente = modelCliente.getClientes(busca);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ControllerMenu.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+
+        String[][] clientes = new String[clientesListModelCliente.size()][4];
+
+        for (int i = 0; i < clientesListModelCliente.size(); i++) {
+            clientes[i][0] = String.valueOf(clientesListModelCliente.get(i).getId());
+            clientes[i][1] = clientesListModelCliente.get(i).getNome();
+            clientes[i][2] = clientesListModelCliente.get(i).getTelefone();
+            clientes[i][3] = clientesListModelCliente.get(i).getEmail();
+
+        }
+
+        TableModel tableModel = new DefaultTableModel(clientes, colunas);
+        theView.setTableModel(tableModel);
     }
 }

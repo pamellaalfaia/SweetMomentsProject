@@ -79,4 +79,12 @@ public class ModelCliente {
     public ArrayList<ModelCliente> getClientes() throws SQLException {
         return theDao.getClientes();
     }
+    
+    public ArrayList<ModelCliente> getClientes(String busca) throws SQLException {
+        return theDao.getClientes(busca);
+    }
+    
+    public ModelCliente getCliente(int busca) throws SQLException {
+        return theDao.getCliente(busca);
+    }
 }
