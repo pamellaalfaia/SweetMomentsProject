@@ -92,7 +92,31 @@ public class DaoEndereco {
         //     }
         return enderecos;
     }
+    
+    public int verificaExistenciaEndereco(int id, int idCliente) throws SQLException {
+        Connection con = new Conexao().getConnection();
+      
+        int quantidade = 0;
+        
+        String sql = "select count(*) from endereco e, cliente c where c.id = e.idCliente and c.id = ? and e.id = ?";
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, idCliente);
+            stmt.setInt(2, id);
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                quantidade = rs.getInt("count(*)");
+            }
+            rs.close();
+            stmt.close();
+            con.close();
 
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return quantidade;
+    }
+    
     public void adiciona(ArrayList<ModelEndereco> enderecos) throws SQLException, ParseException {
         for (int i = 0; i < enderecos.size(); i++) {
             Connection con = new Conexao().getConnection();
@@ -120,4 +144,82 @@ public class DaoEndereco {
             }
         }
     }
+
+    public void adiciona(ModelEndereco endereco) throws SQLException, ParseException {
+    //    for (int i = 0; i < enderecos.size(); i++) {
+            Connection con = new Conexao().getConnection();
+            String sql = "insert into endereco "
+                    + "(id,idCliente,numero,tempoMedioEntrega,descricao,logradouro,bairro,complemento,tipoDeLogradouro,custoEntrega,distanciaEntrega)"
+                    + " values (?,?,?,?,?,?,?,?,?,?,?)";
+            try {
+                try (PreparedStatement stmt = con.prepareStatement(sql)) {
+                    stmt.setInt(1, endereco.getId());
+                    stmt.setInt(2, endereco.getIdCliente());
+                    stmt.setInt(3, endereco.getNumero());
+                    stmt.setDouble(4, endereco.getTempoMedioParaEntrega());
+                    stmt.setString(5, endereco.getDescricao());
+                    stmt.setString(6, endereco.getLogradouro());
+                    stmt.setString(7, endereco.getBairro());
+                    stmt.setString(8, endereco.getComplemento());
+                    stmt.setString(9, endereco.getTipoLogradouro());
+                    stmt.setDouble(10, endereco.getCustoEntrega());
+                    stmt.setDouble(11, endereco.getDistanciaEntrega());
+                    stmt.execute();
+                }
+                con.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        
+    }
+    
+    public void exclui(int idCliente) throws SQLException, ParseException {
+        Connection conexao = new Conexao().getConnection();
+        String sql =  "delete from endereco "
+                    + "where idCliente = ?";
+        try {
+            try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+                stmt.setInt(1, idCliente);
+                stmt.execute();
+            }
+            conexao.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public void altera(ModelEndereco endereco, ModelCliente cliente) throws SQLException, ParseException {
+        Connection conexao = new Conexao().getConnection();
+        String sql =  "update endereco set "
+                + "numero = ?,"
+                + "tempoMedioEntrega = ?,"
+                + "descricao = ?,"
+                + "logradouro = ?,"
+                + "bairro = ?,"
+                + "complemento = ?,"
+                + "tipoDeLogradouro = ?,"
+                + "custoEntrega = ?,"
+                + "distanciaEntrega = ?"
+                + " where id = ? and idCliente = ?";
+        try {
+            try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+                stmt.setInt(1, endereco.getNumero());
+                stmt.setDouble(2, endereco.getTempoMedioParaEntrega());
+                stmt.setString(3, endereco.getDescricao());
+                stmt.setString(4, endereco.getLogradouro());
+                stmt.setString(5, endereco.getBairro());
+                stmt.setString(6, endereco.getComplemento());
+                stmt.setString(7, endereco.getTipoLogradouro());
+                stmt.setDouble(8, endereco.getCustoEntrega());
+                stmt.setDouble(9, endereco.getDistanciaEntrega());
+                stmt.setInt(10, endereco.getId());
+                stmt.setInt(11, endereco.getIdCliente());
+                stmt.execute();
+            }
+            conexao.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+   
 }

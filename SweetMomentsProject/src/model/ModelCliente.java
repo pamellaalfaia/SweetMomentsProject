@@ -87,4 +87,12 @@ public class ModelCliente {
     public ModelCliente getCliente(int busca) throws SQLException {
         return theDao.getCliente(busca);
     }
+    
+    public void excluir (int idCliente) throws SQLException, ParseException {
+        theDao.exclui(idCliente);
+    }
+    
+    public void alterar (ModelCliente cliente) throws SQLException, ParseException {
+        theDao.altera(cliente);
+    }
 }

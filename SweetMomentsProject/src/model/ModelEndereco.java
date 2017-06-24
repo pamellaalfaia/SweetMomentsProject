@@ -127,6 +127,14 @@ public class ModelEndereco {
         this.distanciaEntrega = distanciaEntrega;
     }
             
+    public void adicionarEndereco(ModelEndereco endereco) {
+        try {
+            theDao.adiciona(endereco);
+        } catch (SQLException | ParseException ex) {
+            Logger.getLogger(ControllerCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void adicionarEndereco(ArrayList<ModelEndereco> enderecos) {
         try {
             theDao.adiciona(enderecos);
@@ -148,4 +156,17 @@ public class ModelEndereco {
     public ArrayList<ModelEndereco> getEnderecos(ModelCliente cliente) throws SQLException {
         return theDao.getEnderecos(cliente);
     }
+    
+    public void excluir (int idCliente) throws SQLException, ParseException {
+        theDao.exclui(idCliente);
+    }
+    
+    public void alterar (ModelCliente cliente, ModelEndereco endereco) throws SQLException, ParseException {
+        theDao.altera(endereco,cliente);
+    }
+    
+    public int verificaExistenciaEndereco(int idEndereco, int idCliente) throws SQLException {
+        return theDao.verificaExistenciaEndereco(idEndereco, idCliente);
+    }
+
 }

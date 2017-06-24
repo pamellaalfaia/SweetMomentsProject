@@ -157,4 +157,36 @@ public class DaoCliente {
             throw new RuntimeException(e);
         }
     }
+    
+    public void exclui(int id) throws SQLException, ParseException {
+        Connection conexao = new Conexao().getConnection();
+        String sql =  "delete from cliente "
+                    + "where id = ?";
+        try {
+            try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+                stmt.setInt(1, id);
+                stmt.execute();
+            }
+            conexao.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public void altera(ModelCliente cliente) throws SQLException, ParseException {
+        Connection conexao = new Conexao().getConnection();
+        String sql =  "update cliente set nome = ?, telefone = ?, email = ? where id = ?";
+        try {
+            try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+                stmt.setString(1, cliente.getNome());
+                stmt.setString(2, cliente.getTelefone());
+                stmt.setString(3, cliente.getEmail());
+                stmt.setInt(4, cliente.getId());
+                stmt.execute();
+            }
+            conexao.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
