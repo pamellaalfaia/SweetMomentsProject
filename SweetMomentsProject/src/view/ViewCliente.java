@@ -27,6 +27,7 @@ public class ViewCliente extends javax.swing.JFrame {
     public ViewCliente() {
         initComponents();
 
+        this.setLocationRelativeTo(null);
         this.getContentPane().setBackground(Color.white);
 
         ImageIcon check = new ImageIcon("Images/success-menor.png");
@@ -210,7 +211,6 @@ public class ViewCliente extends javax.swing.JFrame {
         jSeparator2.setName(""); // NOI18N
 
         jButtonSalvarTelaCadastro.setText("Salvar");
-        jButtonSalvarTelaCadastro.setEnabled(false);
 
         jSeparator1.setToolTipText("");
         jSeparator1.setName(""); // NOI18N
@@ -681,7 +681,7 @@ public class ViewCliente extends javax.swing.JFrame {
     }
 
     public void setLabelMapa(String mapa) {
-        jLabelMapa.setText(String.valueOf(mapa));
+        jLabelMapa.setText(mapa);
     }
     
     public String getCodigoEndereco() {

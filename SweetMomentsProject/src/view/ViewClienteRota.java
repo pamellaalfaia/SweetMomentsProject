@@ -20,6 +20,7 @@ public class ViewClienteRota extends javax.swing.JFrame {
      */
     public ViewClienteRota() {
         initComponents();
+        this.setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         ImageIcon back = new ImageIcon("Images/back.png");
         jButtonVoltarDaRota.setIcon(back);

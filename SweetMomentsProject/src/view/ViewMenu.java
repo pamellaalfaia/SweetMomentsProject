@@ -20,7 +20,7 @@ public class ViewMenu extends javax.swing.JFrame {
      */
     public ViewMenu() {
         initComponents();
-        
+        this.setLocationRelativeTo(null);
         //colocando o form branco
         this.getContentPane().setBackground(Color.white);
         

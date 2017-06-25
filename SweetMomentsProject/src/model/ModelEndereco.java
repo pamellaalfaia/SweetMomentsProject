@@ -161,6 +161,10 @@ public class ModelEndereco {
         theDao.exclui(idCliente);
     }
     
+    public void excluir (int idCliente, int idEndereco) throws SQLException, ParseException {
+        theDao.exclui(idCliente,idEndereco);
+    }
+    
     public void alterar (ModelCliente cliente, ModelEndereco endereco) throws SQLException, ParseException {
         theDao.altera(endereco,cliente);
     }

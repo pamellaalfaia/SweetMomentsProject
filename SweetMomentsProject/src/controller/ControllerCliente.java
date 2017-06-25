@@ -52,6 +52,7 @@ public class ControllerCliente {
     int idEndereco = 1;
 
     ArrayList<ModelEndereco> enderecos = new ArrayList<ModelEndereco>();
+    ArrayList<ModelEndereco> enderecosASeremExcluidos = new ArrayList<ModelEndereco>();
 
     public ControllerCliente(view.ViewCliente theView, model.ModelCliente modelCliente, model.ModelEndereco modelEndereco, view.ViewClienteRota theViewRota) {
         this.theView = theView;
@@ -191,25 +192,35 @@ public class ControllerCliente {
                 Logger.getLogger(ControllerCliente.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            theView.painelTelaClientes(1);
+            if (enderecos.size() > 0) {
 
-            recuperaDadosDeEndereco(1);
+                theView.painelTelaClientes(1);
 
-            if (enderecos.size() > 1) {
-                theView.enabledProximoEndereco(true);
+                recuperaDadosDeEndereco(1);
+
+                if (enderecos.size() > 1) {
+                    theView.enabledProximoEndereco(true);
+                }
+                paginaMax = enderecos.size();
+                theView.enabledEditar(true);
+                theView.enabledExcluir(true);
+            } else {
+                limpaCamposEndereco();
+                theView.painelTelaClientes(1);
+                theView.enabledEditar(false);
+                theView.enabledExcluir(false);
             }
-            paginaMax = enderecos.size();
 
             enabledCamposCliente(false);
             enabledCamposEndereco(false);
             theView.enabledSalvarEndereco(false);
             theView.enabledLimparCamposCliente(false);
-            theView.enabledEditar(true);
             theView.enabledNovoEndereco(true);
-            theView.enabledExcluir(true);
             theView.enabledRota(true);
             theView.visibleEditarCliente(true);
             theView.visibleExcluirClienteTelaCliente(true);
+            theView.setPaginaEndereco(1);
+            theView.enabledEnderecoAnterior(false);
         }
 
     }
@@ -219,35 +230,30 @@ public class ControllerCliente {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            int maiorIndice = enderecos.size() - 1;
-            int maiorIdEndereco = enderecos.get(maiorIndice).getId();
+            if (enderecos.size() >= 1) {
+                int maiorIndice = enderecos.size() - 1;
+                int maiorIdEndereco = enderecos.get(maiorIndice).getId();
 
-            theView.setCodigoEndereco(maiorIdEndereco + 1);
+                theView.setCodigoEndereco(maiorIdEndereco + 1);
+                limpaCamposEndereco();
+
+                //próxima página
+                theView.setPaginaEndereco(paginaMax + 1);
+            }
+
             limpaCamposEndereco();
             enabledCamposEndereco(true);
-
-            //pagina atual
-            //int paginaAtual = Integer.parseInt(theView.getPaginaEndereco());
-            //próxima página
-            theView.setPaginaEndereco(paginaMax + 1);
-
+            
             //habilita botões
-            theView.enabledEnderecoAnterior(true);
             theView.enabledSalvarEndereco(true);
+            theView.enabledExcluir(true);
 
             //desabilita botões
             theView.enabledEditar(false);
-            theView.enabledExcluir(true);
             theView.enabledNovoEndereco(false);
-            theView.enabledProximoEndereco(false);
-
             theView.enabledProximoEndereco(false);
             theView.enabledEnderecoAnterior(false);
 
-            /*       //atualiza variável global paginaMax
-            if (paginaMax < paginaAtual) {
-                paginaMax = paginaAtual;
-            }*/
         }
     }
 
@@ -255,36 +261,50 @@ public class ControllerCliente {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            int paginaAtual = Integer.parseInt(theView.getPaginaEndereco());
-            int paginaAtualizada = 0;
 
+            //pega em qual página estamos
+            int paginaAtual = Integer.parseInt(theView.getPaginaEndereco());
+
+            //inaciliaza variavel que conterá a página que vamos
+            int paginaAtualizada = 0;
+            boolean achou = false;
+
+            //remove do ArrayList o endereco que contém o mesmo id que o da tela           
             for (int i = 0; i < enderecos.size(); i++) {
                 if (enderecos.get(i).getId() == Integer.parseInt(theView.getCodigoEndereco())) {
-                    enderecos.set(i, new ModelEndereco(enderecos.get(i).getIdCliente(), enderecos.get(i).getId(), 0, null, null, null, null, null, null, null, null));
+                    enderecosASeremExcluidos.add(enderecos.get(i));         //adiciona em um ArrayList de enderecos que serão excluídos
+                    enderecos.remove(i);                                    //remove do ArrayList de enderecos
+                    achou = true;
                 }
             }
 
+            if (achou) {
+                //seta página atual
+                if (paginaAtual > 1) {
+                    paginaAtualizada = paginaAtual - 1;
+                    theView.setPaginaEndereco(paginaAtualizada);
+                    recuperaDadosDeEndereco(paginaAtualizada);
+                    paginaMax--;
+                } else {
+                    paginaAtualizada = 1;
+                    theView.setPaginaEndereco(paginaAtualizada);
+                    recuperaDadosDeEndereco(paginaAtualizada);
+                    paginaMax--;
+                }
+            } else {
+                paginaAtualizada = paginaAtual - 1;
+                enabledCamposEndereco(false);
+                theView.setPaginaEndereco(paginaAtualizada);
+                recuperaDadosDeEndereco(paginaAtualizada);
+
+            }
+
+
+            //habilita/desabilita botões 
             theView.enabledSalvarEndereco(false);
             theView.enabledNovoEndereco(true);
             theView.enabledEditar(true);
 
-            if (paginaAtual > 1) {
-                paginaAtualizada = paginaAtual - 1;
-                theView.setPaginaEndereco(paginaAtualizada);
-                recuperaDadosDeEndereco(paginaAtualizada);
-                paginaMax--;
-            } else {
-                paginaAtualizada = 1;
-                theView.setPaginaEndereco(paginaAtualizada);
-                recuperaDadosDeEndereco(paginaAtualizada);
-                paginaMax--;
-            }
-
-            /*        if (paginaAtualizada > 1) {
-                theView.enabledEnderecoAnterior(true);
-            } else if (paginaAtualizada < paginaMax) {
-                theView.enabledProximoEndereco(true);
-            }*/
             if ((paginaMax != 1) && (paginaAtualizada == paginaMax)) {
                 theView.enabledProximoEndereco(false);
                 theView.enabledEnderecoAnterior(true);
@@ -378,15 +398,22 @@ public class ControllerCliente {
         @Override
         public void actionPerformed(ActionEvent e) {
 
+            //captura os valores inseridos para endereço
+            String numero = theView.getNumero();
+            Double tempoMedioParaEntrega = Double.parseDouble(theView.getTempoEntrega());
+            Double distanciaEntrega = Double.parseDouble(theView.getDistanciaEntrega());
+            Double custoEntrega = Double.parseDouble(theView.getCustoEntrega());
+            int idEnderecoLabel = Integer.parseInt(theView.getCodigoEndereco());
             String descricao = theView.getDescricao();
             String logradouro = theView.getLogradouro();
             String bairro = theView.getBairro();
             String complemento = theView.getComplemento();
             String tipoLogradouro = theView.getTipoLogradouro();
 
-            if (descricao.equals("") || logradouro.equals("") || bairro.equals("") || complemento.equals("")) {
+            if (descricao.equals("") || logradouro.equals("") || bairro.equals("") || numero.equals("")) {
                 JOptionPane.showMessageDialog(null, "Todas as informações, exceto complemento, são de preenchimento obrigatório.", "DoceIra", JOptionPane.WARNING_MESSAGE);
             } else {
+                
                 //captura os valores inseridos para cliente e instanciando objeto cliente
                 int idCliente = Integer.parseInt(theView.getIdCliente());
                 String nome = theView.getNome();
@@ -394,19 +421,11 @@ public class ControllerCliente {
                 String email = theView.getEmail();
                 modelCliente = new ModelCliente(idCliente, nome, telefone, email);
 
-                //captura os valores inseridos para endereço
-                int numero = Integer.parseInt(theView.getNumero());
-                Double tempoMedioParaEntrega = Double.parseDouble(theView.getTempoEntrega());
-
-                Double distanciaEntrega = Double.parseDouble(theView.getDistanciaEntrega());
-                Double custoEntrega = Double.parseDouble(theView.getCustoEntrega());
-                int idEnderecoLabel = Integer.parseInt(theView.getCodigoEndereco());
-
                 //se o endereco em questão já existe no banco, trata-se de uma atualização
                 try {
                     if (modelEndereco.verificaExistenciaEndereco(idEnderecoLabel, idCliente) != 0) {
 
-                        modelEndereco = new ModelEndereco(idEnderecoLabel, idCliente, numero, tempoMedioParaEntrega, descricao, logradouro, bairro, complemento, tipoLogradouro, custoEntrega, distanciaEntrega);
+                        modelEndereco = new ModelEndereco(idEnderecoLabel, idCliente, Integer.parseInt(numero), tempoMedioParaEntrega, descricao, logradouro, bairro, complemento, tipoLogradouro, custoEntrega, distanciaEntrega);
 
                         for (int i = 0; i < enderecos.size(); i++) {
                             if ((enderecos.get(i).getId() == idEnderecoLabel) && (enderecos.get(i).getIdCliente() == idCliente)) {
@@ -414,12 +433,6 @@ public class ControllerCliente {
                             }
                         }
 
-                        /*        if (situacaoVetorDeEnderecos.equals(""))
-                        situacaoVetorDeEnderecos = "valores alterados";
-                    else if (situacaoVetorDeEnderecos.equals("valores inseridos"))
-                        situacaoVetorDeEnderecos = "valores inseridos e alterados";
-                    else if (situacaoVetorDeEnderecos.equals("valores alterados"))
-                        situacaoVetorDeEnderecos = "valores alterados";*/
                     } else {
                         //proximoCodigo(modelCliente) retorna o max(idEndereco) que tem na tabela de endereco para aquele cliente
                         int idEnderecoBanco = modelEndereco.proximoCodigo(modelCliente);
@@ -431,25 +444,16 @@ public class ControllerCliente {
                         idEndereco = idEnderecoLabel;
 
                         //instancia objeto endereco
-                        modelEndereco = new ModelEndereco(idEndereco, idCliente, numero, tempoMedioParaEntrega, descricao, logradouro, bairro, complemento, tipoLogradouro, custoEntrega, distanciaEntrega);
+                        modelEndereco = new ModelEndereco(idEndereco, idCliente, Integer.parseInt(numero), tempoMedioParaEntrega, descricao, logradouro, bairro, complemento, tipoLogradouro, custoEntrega, distanciaEntrega);
 
                         //inclui objeto endereço no arraylist que será salvo no banco
                         enderecos.add(modelEndereco);
 
-                        /*     if (situacaoVetorDeEnderecos.equals(""))
-                        situacaoVetorDeEnderecos = "valores inseridos";
-                    else if (situacaoVetorDeEnderecos.equals("valores inseridos"))
-                        situacaoVetorDeEnderecos = "valores inseridos";
-                    else if (situacaoVetorDeEnderecos.equals("valores alterados"))
-                        situacaoVetorDeEnderecos = "valores inseridos e alterados";*/
                     }
                 } catch (SQLException ex) {
                     Logger.getLogger(ControllerCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
-                //inclui objeto endereço no arraylist que será salvo no banco
-                //enderecos.add(modelEndereco);
-                //pega a página que está sendo exibida na tela
                 int paginaAtual = Integer.parseInt(theView.getPaginaEndereco());
                 //atualiza variável global paginaMax
                 if (paginaMax < paginaAtual) {
@@ -474,6 +478,9 @@ public class ControllerCliente {
                 } else if ((paginaAtual == 1) && (paginaAtual < paginaMax)) {
                     theView.enabledEnderecoAnterior(false);
                     theView.enabledProximoEndereco(true);
+                } else if ((paginaAtual == 1) && (paginaAtual == paginaMax)) {
+                    theView.enabledEnderecoAnterior(false);
+                    theView.enabledProximoEndereco(false);
                 } else if ((paginaAtual > paginaMax) || (paginaAtual < paginaMax)) {
                     theView.enabledProximoEndereco(true);
                     theView.enabledEnderecoAnterior(true);
@@ -502,10 +509,14 @@ public class ControllerCliente {
                         modelCliente.adicionarCliente(modelCliente);
                     }
                     modelCliente.alterar(modelCliente);
+                    if (enderecosASeremExcluidos.size() > 0) {
+                        excluiEnderecos(idCliente);
+                    }
+
                 } catch (SQLException | ParseException ex) {
                     Logger.getLogger(ControllerCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                JOptionPane.showMessageDialog(null, "Informações salvas no banco. Nenhum endereço foi cadastrado para o cliente " + nome, "DoceIra", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Informações salvas no banco. Nenhum endereço foi \ncadastrado para o cliente " + nome, "DoceIra", JOptionPane.WARNING_MESSAGE);
             } else {
 
                 try {
@@ -529,10 +540,22 @@ public class ControllerCliente {
                             }
                         }
                     }
+                    if (enderecosASeremExcluidos.size() > 0) {
+                        excluiEnderecos(idCliente);
+                    }
                 } catch (SQLException | ParseException ex) {
                     Logger.getLogger(ControllerCliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                JOptionPane.showMessageDialog(null, "Informações salvas no banco." + nome, "DoceIra", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Informações salvas no banco.", "DoceIra", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+
+    }
+
+    private void excluiEnderecos(int idCliente) throws ParseException, SQLException {
+        for (int i = 0; i < enderecosASeremExcluidos.size(); i++) {
+            if (modelEndereco.verificaExistenciaEndereco(enderecosASeremExcluidos.get(i).getId(), idCliente) > 0) {
+                modelEndereco.excluir(idCliente, enderecosASeremExcluidos.get(i).getId());
             }
         }
     }
@@ -676,22 +699,37 @@ public class ControllerCliente {
         theView.enabledEmail(x);
     }
 
+    //   private void calculaPosicoesValidas 
     private void recuperaDadosDeEndereco(int pagina) {
+        
         //recuperando dados do endereco
-        theView.setDescricao(enderecos.get(pagina - 1).getDescricao());
-        theView.setTipoLogradouro(enderecos.get(pagina - 1).getTipoLogradouro());
-        theView.setLogradouro(enderecos.get(pagina - 1).getLogradouro());
-        theView.setNumero(String.valueOf(enderecos.get(pagina - 1).getNumero()));
-        theView.setBairro(enderecos.get(pagina - 1).getBairro());
-        theView.setComplemento(enderecos.get(pagina - 1).getComplemento());
-        theView.setTempoEntrega(String.valueOf(enderecos.get(pagina - 1).getTempoMedioParaEntrega()));
-        theView.setDistanciaEntrega(String.valueOf(enderecos.get(pagina - 1).getDistanciaEntrega()));
-        theView.setCustoEntrega(String.valueOf(enderecos.get(pagina - 1).getCustoEntrega()));
-        theView.setCodigoEndereco(enderecos.get(pagina - 1).getId());
-        montaMapa(enderecos.get(pagina - 1).getTipoLogradouro(),
-                enderecos.get(pagina - 1).getLogradouro(),
-                String.valueOf(enderecos.get(pagina - 1).getNumero()),
-                enderecos.get(pagina - 1).getBairro());
+        int indice = pagina - 1;
+
+        if (enderecos.size() > 0) {
+
+            theView.setDescricao(enderecos.get(indice).getDescricao());
+            theView.setTipoLogradouro(enderecos.get(indice).getTipoLogradouro());
+            theView.setLogradouro(enderecos.get(indice).getLogradouro());
+            theView.setNumero(String.valueOf(enderecos.get(indice).getNumero()));
+            theView.setBairro(enderecos.get(indice).getBairro());
+            theView.setComplemento(enderecos.get(indice).getComplemento());
+            theView.setTempoEntrega(String.valueOf(enderecos.get(indice).getTempoMedioParaEntrega()));
+            theView.setDistanciaEntrega(String.valueOf(enderecos.get(indice).getDistanciaEntrega()));
+            theView.setCustoEntrega(String.valueOf(enderecos.get(indice).getCustoEntrega()));
+            theView.setCodigoEndereco(enderecos.get(indice).getId());
+            montaMapa(enderecos.get(indice).getTipoLogradouro(),
+                    enderecos.get(indice).getLogradouro(),
+                    String.valueOf(enderecos.get(indice).getNumero()),
+                    enderecos.get(indice).getBairro());
+
+        } else {
+            limpaCamposEndereco();
+            enabledCamposEndereco(true);
+            theView.enabledSalvarEndereco(true);
+            theView.enabledNovoEndereco(false);
+            theView.enabledEditar(false);
+            theView.enabledExcluir(false);
+        }
     }
 
     private void montaMapa(String tipoLogradouro, String logradouro, String numero, String bairro) {

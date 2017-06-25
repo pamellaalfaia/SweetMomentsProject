@@ -188,6 +188,22 @@ public class DaoEndereco {
         }
     }
     
+    public void exclui(int idCliente, int idEndereco) throws SQLException, ParseException {
+        Connection conexao = new Conexao().getConnection();
+        String sql =  "delete from endereco "
+                    + "where idCliente = ? and id = ?";
+        try {
+            try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+                stmt.setInt(1, idCliente);
+                stmt.setInt(2, idEndereco);
+                stmt.execute();
+            }
+            conexao.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
     public void altera(ModelEndereco endereco, ModelCliente cliente) throws SQLException, ParseException {
         Connection conexao = new Conexao().getConnection();
         String sql =  "update endereco set "
